@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A Mac mini for AI agents, driven from an iPad Pro</title>
+<meta name="description" content="Set up a headless Mac mini to run Claude Code, Cursor and other agents around the clock, and check in from an iPad Pro: screenshots, dictation, Tailscale.">
+<link rel="canonical" href="https://mimac.ai/guides/mac-mini-for-ai-agents/">
+<meta name="theme-color" content="#FBFBFD" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0D12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- <meta name="apple-itunes-app" content="app-id=TBD"> -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mimac">
+<meta property="og:title" content="A Mac mini for AI agents, driven from an iPad Pro">
+<meta property="og:description" content="Set up a headless Mac mini to run Claude Code, Cursor and other agents around the clock, and check in from an iPad Pro: screenshots, dictation, reboots, Tailscale.">
+<meta property="og:url" content="https://mimac.ai/guides/mac-mini-for-ai-agents/">
+<meta property="og:image" content="https://mimac.ai/assets/og/guide-mac-mini-for-ai-agents.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="A Mac mini for AI agents, driven from an iPad Pro">
+<meta name="twitter:description" content="Set up a headless Mac mini to run Claude Code, Cursor and other agents around the clock, and check in from an iPad Pro: screenshots, dictation, reboots, Tailscale.">
+<meta name="twitter:image" content="https://mimac.ai/assets/og/guide-mac-mini-for-ai-agents.png">
+<link rel="stylesheet" href="/assets/site.css">
+<noscript><style>.nav-toggle{display:none!important}.menu{display:flex!important;position:static!important;flex-direction:row!important;flex-wrap:wrap;gap:.6rem 1.2rem!important;padding:0 0 .9rem!important;border:0!important;width:100%}.menu a{padding:0!important;border:0!important;font-size:.95rem!important}.nav-inner{flex-wrap:wrap}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Mimac", "item": "https://mimac.ai/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/"},
+        {"@type": "ListItem", "position": 3, "name": "Mac mini for AI agents", "item": "https://mimac.ai/guides/mac-mini-for-ai-agents/"}
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Run AI coding agents on a headless Mac mini and check in from an iPad Pro",
+      "description": "Set up a Mac mini to run Claude Code, Cursor and similar agents unattended, and use an iPad Pro with Mimac to watch, steer and feed them.",
+      "totalTime": "PT45M",
+      "tool": [{"@type": "HowToTool", "name": "Mac mini with Apple silicon, macOS 15 or later"}, {"@type": "HowToTool", "name": "iPad Pro with Magic Keyboard, iPadOS 26 or later"}],
+      "supply": [{"@type": "HowToSupply", "name": "Mimac Connect for Mac and Mimac for iPad"}, {"@type": "HowToSupply", "name": "Tailscale, for access away from home"}],
+      "step": [
+        {"@type": "HowToStep", "name": "Set up the Mac for unattended work", "text": "Install your agents and toolchain, create a dedicated user account for them, and set energy settings so the Mac never sleeps.", "url": "https://mimac.ai/guides/mac-mini-for-ai-agents/#step1"},
+        {"@type": "HowToStep", "name": "Install Mimac Connect with Start before login", "text": "So a restarted Mac is reachable at the login window. Decide about FileVault.", "url": "https://mimac.ai/guides/mac-mini-for-ai-agents/#step2"},
+        {"@type": "HowToStep", "name": "Run long sessions in tmux", "text": "Agent sessions survive terminal restarts and macOS updates when they live in tmux.", "url": "https://mimac.ai/guides/mac-mini-for-ai-agents/#step3"},
+        {"@type": "HowToStep", "name": "Check in from the iPad", "text": "Connect with Mimac and use Option+Tab to move between the agent's terminal and the app it is changing.", "url": "https://mimac.ai/guides/mac-mini-for-ai-agents/#step4"},
+        {"@type": "HowToStep", "name": "Show the agent what you see", "text": "Drag a rectangle on the glass; it lands on the Mac's clipboard. Paste it into the agent.", "url": "https://mimac.ai/guides/mac-mini-for-ai-agents/#step5"},
+        {"@type": "HowToStep", "name": "Talk instead of type", "text": "Use the dictation key, or a Mac dictation app through Mimac Microphone, for long prompts.", "url": "https://mimac.ai/guides/mac-mini-for-ai-agents/#step6"},
+        {"@type": "HowToStep", "name": "Reach it from anywhere", "text": "Put both devices on a Tailscale tailnet and disable key expiry for the Mac.", "url": "https://mimac.ai/guides/mac-mini-for-ai-agents/#step7"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="auto">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Mimac home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11141B"/><path d="M18 80V22L50 57 82 22V80" fill="none" stroke="#4FD1FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Mimac</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span></button>
+    <nav id="menu" class="menu" aria-label="Primary">
+      <a href="/mac/">Mac app</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/#compare">Compare</a>
+      <a href="/guides/headless-mac-mini-ipad-pro/">Guides</a>
+      <a href="/support/">Support</a>
+      <a class="btn btn-sm" href="https://apps.apple.com/app/idTBD">App Store</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Mimac</a><span>/</span>Guides<span>/</span>Mac mini for AI agents</p>
+    <h1>A Mac mini for AI agents, driven from an iPad Pro</h1>
+    <p class="lead">Coding agents run for hours and want a machine that is always on. A Mac mini is that machine: quiet, small, cheap to run, with the whole macOS toolchain. The part nobody solves well is looking at it. This guide sets up a Mac mini that runs agents unattended, and an iPad Pro that lets you watch, steer and feed them from the sofa or the other side of the world.</p>
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap layout-aside">
+    <div class="prose">
+      <div class="device" style="max-width:640px;margin:0 0 2rem">
+        <img class="device-screen" src="/assets/img/scene-agents.svg" alt="Two terminals and a chat window inside Mimac, with a screenshot rectangle being dragged over the terminal" width="1376" height="1032">
+        <img class="device-frame" src="/assets/img/ipad-frame.svg" alt="" width="1600" height="1344">
+      </div>
+      <h2>Why a Mac mini, and why the iPad</h2>
+      <p>An agent box needs three things: it must stay on, it must have the real tools (Xcode, Homebrew, Docker, a browser the agent can drive), and it must be easy to check on. A laptop fails the first, a Linux box in the cloud fails the second for anything Apple-flavoured, and a Mac mini with a dummy plug and a VNC client fails the third. Mimac fixes the third: the Mac renders at your iPad's exact resolution and streams at 120 fps, the Magic Keyboard is a Mac keyboard, and two things that matter specifically for agents, screenshots and voice, go the right way.</p>
+      <p>Any Apple silicon Mac mini will do for cloud-hosted agents. If you also run local models, memory is the constraint; buy as much as you can justify.</p>
+
+      <h2>Steps</h2>
+      <ol class="steps">
+        <li id="step1"><strong>Set up the Mac for unattended work.</strong><p>Install your agents and toolchain the way their documentation says. Consider a dedicated user account for the agents, separate from your own, so a runaway <code>rm</code> has a smaller blast radius and you can log in as yourself alongside it. In System Settings &rarr; Energy, turn on <em>Prevent automatic sleeping when the display is off</em>, <em>Wake for network access</em> and <em>Start up automatically after a power failure</em>.</p></li>
+        <li id="step2"><strong>Install Mimac Connect with Start before login.</strong><p>Get it from <a href="/mac/">mimac.ai/mac</a>, tick <strong>Start before login</strong> and <strong>Mimac Microphone</strong>, and grant Screen Recording and Accessibility. Start before login means a restarted Mac is waiting at the login window for you, which turns a macOS update from a trip to the closet into a ten-minute wait. It needs FileVault off; the <a href="/guides/headless-mac-mini-ipad-pro/">headless guide</a> explains the trade-off. Then pull the monitor and any dummy plug.</p></li>
+        <li id="step3"><strong>Run long sessions in tmux.</strong><p>Because Mimac shows you the Mac's real desktop, your terminal windows are exactly where you left them. Still, put agent sessions in <code>tmux</code>: a terminal app that quits, a user who logs out, or an update that restarts the Mac no longer takes the session with it, and you can attach from the iPad or from any SSH client later.</p></li>
+        <li id="step4"><strong>Check in from the iPad.</strong><p>Open Mimac, tap the Mac, and you are looking at the desktop in a second or two. <kbd>Option</kbd>+<kbd>Tab</kbd> switches between the agent's terminal and the app or browser it is changing. Scroll through logs with two fingers; at 120 fps it reads like a native app. Switch to another iPad app to answer a message and back again, and the session resumes instantly.</p></li>
+        <li id="step5"><strong>Show the agent what you see.</strong><p>Agents are bad at the one thing you are good at: noticing that the layout is wrong. Drag a rectangle on the glass with a finger. The region lands on the Mac's clipboard as an image; press <kbd>Command</kbd>+<kbd>V</kbd> in the agent's chat and it is looking at what you are looking at. Double-tap for a quick snapshot of an area. No file to find, no AirDrop, no round trip through Photos.</p></li>
+        <li id="step6"><strong>Talk instead of type.</strong><p>Long prompts are faster spoken. The Magic Keyboard's dictation key types your words on the Mac. With Mimac Microphone installed, the iPad's microphone is a real input device on the Mac, so Wispr Flow, OpenWhispr or macOS dictation work in any app there, with the vocabulary and formatting you have already set up.</p></li>
+        <li id="step7"><strong>Reach it from anywhere.</strong><p>Put both devices on a Tailscale tailnet, connect to the Mac by its Tailscale name, and disable key expiry for the Mac in Tailscale's admin console so it never drops off while unattended. The <a href="/guides/remote-mac-with-tailscale/">Tailscale guide</a> has the details. Frame rate on the road follows your connection; for watching a terminal it is more than enough.</p></li>
+      </ol>
+
+      <h2>Security, plainly</h2>
+      <ul>
+        <li>Mimac has no relay and no account. The only things that can connect to your Mac are iPads you have paired with the six-digit code, and every session is end-to-end encrypted.</li>
+        <li>If you share a tailnet with other people, use Tailscale's access controls to limit who can reach the agent box.</li>
+        <li>FileVault off is a real trade-off. It is the price of unattended restarts. Make it deliberately.</li>
+        <li>An agent with your credentials is an agent with your credentials. Scope its keys, and keep the dedicated user account idea from step one.</li>
+      </ul>
+
+      <h2>How Mimac compares for this setup</h2>
+      <div class="table-wrap">
+        <table class="compare compare-4">
+          <thead><tr><th scope="col">&nbsp;</th><th scope="col" class="m">Mimac</th><th scope="col">Workbench</th><th scope="col">Jump Desktop</th><th scope="col">Screens 5</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Display on a headless Mac</th><td class="m"><span class="y">iPad's exact resolution</span></td><td>Not stated</td><td>1080p virtual display</td><td>Needs a display or dummy plug</td></tr>
+            <tr><th scope="row">Frame rate</th><td class="m"><span class="y">120 fps</span> on LAN</td><td>Not stated</td><td>60 fps</td><td>VNC-class</td></tr>
+            <tr><th scope="row">Trackpad gestures</th><td class="m"><span class="y">Native pinch and momentum</span></td><td>Zoom and pan</td><td>Basic</td><td>Basic</td></tr>
+            <tr><th scope="row">iPad mic on the Mac</th><td class="m"><span class="y">Yes</span></td><td>Built-in speech-to-text</td><td><span class="n">No</span></td><td><span class="n">No</span></td></tr>
+            <tr><th scope="row">Screenshot to Mac clipboard</th><td class="m"><span class="y">Yes</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
+            <tr><th scope="row">Remote path</th><td class="m">Your Tailscale; no relay</td><td>Vendor relay</td><td>Vendor relay</td><td>Vendor relay</td></tr>
+            <tr><th scope="row">Price</th><td class="m"><span class="y">$49.99 once</span></td><td>$79.99 per year</td><td>$14.99 once</td><td>$29.99 per year or $179.99 lifetime</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">Prices and facts as of September 1, 2026. Full comparisons: <a href="/compare/workbench/">Mimac vs Workbench</a>, <a href="/compare/jump-desktop/">Jump Desktop</a>, <a href="/compare/screens/">Screens 5</a>. Pricing details on the <a href="/pricing/">pricing page</a>.</p>
+    </div>
+    <aside class="aside">
+      <div class="card">
+        <h3>Get Mimac</h3>
+        <p>Free to try for seven days. $49.99 once after that. Mimac Connect for Mac is free.</p>
+        <a class="btn" href="https://apps.apple.com/app/idTBD">Download on the App Store</a>
+        <a class="btn btn-ghost" href="/mac/">Get Mimac Connect for Mac</a>
+        <h3 style="margin-top:1.5rem">More guides</h3>
+        <ul>
+          <li><a href="/guides/headless-mac-mini-ipad-pro/">Headless Mac mini + iPad Pro</a></li>
+          <li><a href="/guides/remote-mac-with-tailscale/">Remote Mac with Tailscale</a></li>
+          <li><a href="/guides/magic-keyboard-shortcuts/">Magic Keyboard shortcuts</a></li>
+          <li><a href="/guides/mac-mini-for-ai-agents/">Mac mini for AI agents</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Your Mac, at 120 fps, on the iPad Pro.</h2>
+    <p class="lead narrow">One purchase, forever. No subscription, no account, no relay.</p>
+    <div class="cta">
+      <a class="btn btn-lg" href="https://apps.apple.com/app/idTBD">Download on the App Store</a>
+      <a class="btn btn-lg btn-ghost" href="/pricing/">See pricing</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/" aria-label="Mimac home">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11141B"/><path d="M18 80V22L50 57 82 22V80" fill="none" stroke="#4FD1FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Mimac</span>
+        </a>
+        <p class="footer-blurb">Remote desktop rebuilt for iPad Pro and Magic Keyboard. One purchase, forever.</p>
+        <p class="footer-blurb"><a href="mailto:support@mimac.ai">support@mimac.ai</a></p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <ul>
+          <li><a href="https://apps.apple.com/app/idTBD">Download on the App Store</a></li>
+          <li><a href="/mac/">Mimac Connect for Mac</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/support/">Support</a></li>
+          <li><a href="/press/">Press kit</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Compare</h3>
+        <ul>
+          <li><a href="/compare/workbench/">Mimac vs Workbench</a></li>
+          <li><a href="/compare/jump-desktop/">Mimac vs Jump Desktop</a></li>
+          <li><a href="/compare/screens/">Mimac vs Screens 5</a></li>
+          <li><a href="/compare/luna-display/">Mimac vs Luna Display</a></li>
+          <li><a href="/compare/splashtop/">Mimac vs Splashtop</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides</h3>
+        <ul>
+          <li><a href="/guides/headless-mac-mini-ipad-pro/">Headless Mac mini + iPad Pro</a></li>
+          <li><a href="/guides/remote-mac-with-tailscale/">Remote Mac with Tailscale</a></li>
+          <li><a href="/guides/magic-keyboard-shortcuts/">Magic Keyboard shortcuts</a></li>
+          <li><a href="/guides/mac-mini-for-ai-agents/">Mac mini for AI agents</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Justin Ponczek. iPad, iPad Pro, Mac, Mac mini, Mac Studio, macOS and Magic Keyboard are trademarks of Apple Inc. Mimac is not affiliated with Apple.</span>
+      <span><a href="/press/">Engineered with Claude</a></span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

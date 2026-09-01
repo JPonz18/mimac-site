@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Headless Mac mini with an iPad Pro: setup guide</title>
+<meta name="description" content="Run a Mac mini with no monitor, using an iPad Pro as its display, keyboard and trackpad. Step-by-step setup with Mimac, including start before login.">
+<link rel="canonical" href="https://mimac.ai/guides/headless-mac-mini-ipad-pro/">
+<meta name="theme-color" content="#FBFBFD" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0D12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- <meta name="apple-itunes-app" content="app-id=TBD"> -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mimac">
+<meta property="og:title" content="Headless Mac mini with an iPad Pro: setup guide">
+<meta property="og:description" content="Run a Mac mini with no monitor, using an iPad Pro as its display, keyboard and trackpad. Step-by-step setup with Mimac, including start before login and FileVault.">
+<meta property="og:url" content="https://mimac.ai/guides/headless-mac-mini-ipad-pro/">
+<meta property="og:image" content="https://mimac.ai/assets/og/guide-headless-mac-mini-ipad-pro.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Headless Mac mini with an iPad Pro: setup guide">
+<meta name="twitter:description" content="Run a Mac mini with no monitor, using an iPad Pro as its display, keyboard and trackpad. Step-by-step setup with Mimac, including start before login and FileVault.">
+<meta name="twitter:image" content="https://mimac.ai/assets/og/guide-headless-mac-mini-ipad-pro.png">
+<link rel="stylesheet" href="/assets/site.css">
+<noscript><style>.nav-toggle{display:none!important}.menu{display:flex!important;position:static!important;flex-direction:row!important;flex-wrap:wrap;gap:.6rem 1.2rem!important;padding:0 0 .9rem!important;border:0!important;width:100%}.menu a{padding:0!important;border:0!important;font-size:.95rem!important}.nav-inner{flex-wrap:wrap}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Mimac", "item": "https://mimac.ai/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/"},
+        {"@type": "ListItem", "position": 3, "name": "Headless Mac mini with an iPad Pro", "item": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/"}
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Set up a headless Mac mini with an iPad Pro as its display",
+      "description": "Run a Mac mini with no monitor and use an iPad Pro with a Magic Keyboard as its display, keyboard and trackpad, using Mimac.",
+      "totalTime": "PT20M",
+      "tool": [{"@type": "HowToTool", "name": "Mac mini or Mac Studio with Apple silicon, macOS 15 or later"}, {"@type": "HowToTool", "name": "iPad with an M-series chip, iPadOS 26 or later, with a Magic Keyboard"}, {"@type": "HowToTool", "name": "A monitor or another Mac for the one-time first setup"}],
+      "supply": [{"@type": "HowToSupply", "name": "Mimac Connect for Mac (free)"}, {"@type": "HowToSupply", "name": "Mimac for iPad"}],
+      "step": [
+        {"@type": "HowToStep", "name": "Do the first setup with a display, once", "text": "Complete macOS Setup Assistant and create your account with a monitor attached, or via macOS Screen Sharing from another Mac.", "url": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/#step1"},
+        {"@type": "HowToStep", "name": "Install Mimac Connect", "text": "Download Mimac Connect from mimac.ai/mac, run the installer, and tick Start before login.", "url": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/#step2"},
+        {"@type": "HowToStep", "name": "Grant Screen Recording and Accessibility", "text": "Approve both permissions in System Settings, Privacy & Security.", "url": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/#step3"},
+        {"@type": "HowToStep", "name": "Decide about FileVault", "text": "Turn FileVault off if you want the Mac reachable after an unattended restart; keep it on if the Mac is somewhere you do not control.", "url": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/#step4"},
+        {"@type": "HowToStep", "name": "Keep the Mac awake and reachable", "text": "In System Settings, Energy, prevent automatic sleeping, wake for network access, and start up after a power failure.", "url": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/#step5"},
+        {"@type": "HowToStep", "name": "Pair from the iPad", "text": "Open Mimac on the iPad, choose the Mac, and enter the six-digit code from the Mimac Connect menu-bar item.", "url": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/#step6"},
+        {"@type": "HowToStep", "name": "Unplug the monitor", "text": "Remove the monitor and any HDMI dummy plug. Mimac creates a display at the iPad's exact resolution.", "url": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/#step7"},
+        {"@type": "HowToStep", "name": "Optional: add Tailscale for use away from home", "text": "Install Tailscale on both devices and connect by the Mac's Tailscale name.", "url": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/#step8"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="auto">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Mimac home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11141B"/><path d="M18 80V22L50 57 82 22V80" fill="none" stroke="#4FD1FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Mimac</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span></button>
+    <nav id="menu" class="menu" aria-label="Primary">
+      <a href="/mac/">Mac app</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/#compare">Compare</a>
+      <a href="/guides/headless-mac-mini-ipad-pro/">Guides</a>
+      <a href="/support/">Support</a>
+      <a class="btn btn-sm" href="https://apps.apple.com/app/idTBD">App Store</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Mimac</a><span>/</span>Guides<span>/</span>Headless Mac mini</p>
+    <h1>Headless Mac mini with an iPad Pro: the setup guide</h1>
+    <p class="lead">A Mac mini is a wonderful computer to not look at. Small, silent, always on, and cheap to run. With Mimac, your iPad Pro becomes the display it never had, at the iPad's exact resolution and 120 fps, with your Magic Keyboard doing the typing. About twenty minutes, one time.</p>
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap layout-aside">
+    <div class="prose">
+      <div class="device" style="max-width:640px;margin:0 0 2rem">
+        <img class="device-screen" src="/assets/img/scene-login.svg" alt="A macOS login window shown on an iPad Pro through Mimac, before anyone has logged in to the Mac" width="1376" height="1032">
+        <img class="device-frame" src="/assets/img/ipad-frame.svg" alt="" width="1600" height="1344">
+      </div>
+      <h2>What you need</h2>
+      <ul>
+        <li>A Mac mini or Mac Studio with Apple silicon running macOS 15 or later. Intel Macs are not supported.</li>
+        <li>An iPad with an M-series chip on iPadOS 26 or later, ideally an iPad Pro with a Magic Keyboard. Any trackpad and keyboard will do.</li>
+        <li>Both devices on the same Wi-Fi or Ethernet network for the setup.</li>
+        <li>A monitor, or another Mac, for the very first setup. After this you will never need it again.</li>
+      </ul>
+
+      <h2>Steps</h2>
+      <ol class="steps">
+        <li id="step1"><strong>Do the first setup with a display, once.</strong><p>macOS needs a person to click through Setup Assistant, create the user account and approve two permissions for Mimac Connect. Plug in any monitor for this, or, if the Mac is already set up, turn on Screen Sharing in System Settings &rarr; General &rarr; Sharing and do the rest from another Mac. Leaving Screen Sharing on is a good idea anyway: it is your fallback if a future macOS update ever resets a permission.</p></li>
+        <li id="step2"><strong>Install Mimac Connect.</strong><p>Download it from <a href="/mac/">mimac.ai/mac</a> and run the installer. Tick <strong>Start before login</strong>: it installs a small system agent that owns Mimac's display from the moment the login window appears, so a restarted Mac is reachable before anyone has logged in. Leave <strong>Mimac Microphone</strong> ticked if you use dictation. Both ask for your administrator password.</p></li>
+        <li id="step3"><strong>Grant Screen Recording and Accessibility.</strong><p>Mimac Connect appears in the menu bar and asks for both. Screen Recording lets it capture the display; Accessibility lets it move the pointer and type. Approve them in System Settings &rarr; Privacy &amp; Security. Without Accessibility you will see the Mac but not be able to control it.</p></li>
+        <li id="step4"><strong>Decide about FileVault.</strong><p>With FileVault on, a restarted Mac stops at a pre-boot unlock screen before macOS is running. Nothing can reach it there, not Mimac, not Screen Sharing, not anything, until someone types the password locally. If the Mac lives in your home or a locked office, turn FileVault off in System Settings &rarr; Privacy &amp; Security and enjoy unattended restarts. If it lives somewhere you do not control, keep FileVault on and only restart when you can be there. There is no third option, and anyone who tells you otherwise is selling something.</p></li>
+        <li id="step5"><strong>Keep the Mac awake and reachable.</strong><p>In System Settings &rarr; Energy: turn on <em>Prevent automatic sleeping when the display is off</em>, <em>Wake for network access</em>, and <em>Start up automatically after a power failure</em>. A headless Mac that falls asleep is a Mac you drive across town to press a key on.</p></li>
+        <li id="step6"><strong>Pair from the iPad.</strong><p>Open Mimac on the iPad. Macs running Mimac Connect on the same network appear by name; tap yours. Click the Mimac icon in the Mac's menu bar to read the six-digit pairing code and type it on the iPad. That is the last time you will type it: both devices keep a key in their Keychain from now on, and every session is end-to-end encrypted with keys derived from it.</p></li>
+        <li id="step7"><strong>Unplug the monitor.</strong><p>Mimac creates a virtual display at your iPad's exact resolution, 2752&times;2064 on the 13-inch iPad Pro or 2420&times;1668 on the 11-inch, so the Mac has a display whenever Mimac Connect is running. You do not need an HDMI dummy plug. If you have one from a previous setup, remove it: it gives the Mac a second, differently sized display that only gets in the way.</p></li>
+        <li id="step8"><strong>Optional: add Tailscale for use away from home.</strong><p>On your own network you are done. To reach the Mac from anywhere, install Tailscale on both devices and connect by the Mac's Tailscale name. The <a href="/guides/remote-mac-with-tailscale/">Tailscale guide</a> walks through it, including the key-expiry setting that matters for a Mac nobody sits at.</p></li>
+      </ol>
+
+      <h2>Living with it</h2>
+      <p>Open Mimac, tap the Mac, and the desktop is there in a second or two. The first connection after installing can take longer while macOS prepares screen capture; every one after that is quick. <kbd>Option</kbd>+<kbd>Tab</kbd> opens the Mac's app switcher; <kbd>Command</kbd>+<kbd>Tab</kbd> stays the iPad's. Two-finger scrolling coasts like a MacBook trackpad, pinch zooms, and every Mac keyboard shortcut goes to the Mac. Audio comes through losslessly, and if you installed Mimac Microphone, your voice goes the other way.</p>
+      <p>To restart the Mac, use the Apple menu as you normally would. With Start before login installed, wait half a minute, reconnect, and log in at the login window from the iPad. After a macOS update, check that Screen Recording and Accessibility are still granted; macOS occasionally resets them, and this is what the Screen Sharing fallback from step one is for.</p>
+      <p>If pinch stops working after a macOS update, open Mimac's tuning panel and switch <em>Pinch delivery</em> to <em>Control+scroll</em>. Mimac Connect updates itself, and a fix for a changed macOS interface arrives that way.</p>
+
+      <h2>How Mimac compares for this setup</h2>
+      <div class="table-wrap">
+        <table class="compare compare-4">
+          <thead><tr><th scope="col">&nbsp;</th><th scope="col" class="m">Mimac</th><th scope="col">Workbench</th><th scope="col">Jump Desktop</th><th scope="col">Screens 5</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Display on a headless Mac</th><td class="m"><span class="y">iPad's exact resolution</span></td><td>Not stated</td><td>1080p virtual display</td><td>Needs a display or dummy plug</td></tr>
+            <tr><th scope="row">Frame rate</th><td class="m"><span class="y">120 fps</span> on LAN</td><td>Not stated</td><td>60 fps</td><td>VNC-class</td></tr>
+            <tr><th scope="row">Trackpad gestures</th><td class="m"><span class="y">Native pinch and momentum</span></td><td>Zoom and pan</td><td>Basic</td><td>Basic</td></tr>
+            <tr><th scope="row">iPad mic on the Mac</th><td class="m"><span class="y">Yes</span></td><td>Built-in speech-to-text</td><td><span class="n">No</span></td><td><span class="n">No</span></td></tr>
+            <tr><th scope="row">Screenshot to Mac clipboard</th><td class="m"><span class="y">Yes</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
+            <tr><th scope="row">Remote path</th><td class="m">Your Tailscale; no relay</td><td>Vendor relay</td><td>Vendor relay</td><td>Vendor relay</td></tr>
+            <tr><th scope="row">Price</th><td class="m"><span class="y">$49.99 once</span></td><td>$79.99 per year</td><td>$14.99 once</td><td>$29.99 per year or $179.99 lifetime</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">Prices and facts as of September 1, 2026. Full comparisons: <a href="/compare/workbench/">Mimac vs Workbench</a>, <a href="/compare/jump-desktop/">Jump Desktop</a>, <a href="/compare/screens/">Screens 5</a>. Pricing details on the <a href="/pricing/">pricing page</a>.</p>
+    </div>
+    <aside class="aside">
+      <div class="card">
+        <h3>Get Mimac</h3>
+        <p>Free to try for seven days. $49.99 once after that. Mimac Connect for Mac is free.</p>
+        <a class="btn" href="https://apps.apple.com/app/idTBD">Download on the App Store</a>
+        <a class="btn btn-ghost" href="/mac/">Get Mimac Connect for Mac</a>
+        <h3 style="margin-top:1.5rem">More guides</h3>
+        <ul>
+          <li><a href="/guides/headless-mac-mini-ipad-pro/">Headless Mac mini + iPad Pro</a></li>
+          <li><a href="/guides/remote-mac-with-tailscale/">Remote Mac with Tailscale</a></li>
+          <li><a href="/guides/magic-keyboard-shortcuts/">Magic Keyboard shortcuts</a></li>
+          <li><a href="/guides/mac-mini-for-ai-agents/">Mac mini for AI agents</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Your Mac, at 120 fps, on the iPad Pro.</h2>
+    <p class="lead narrow">One purchase, forever. No subscription, no account, no relay.</p>
+    <div class="cta">
+      <a class="btn btn-lg" href="https://apps.apple.com/app/idTBD">Download on the App Store</a>
+      <a class="btn btn-lg btn-ghost" href="/pricing/">See pricing</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/" aria-label="Mimac home">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11141B"/><path d="M18 80V22L50 57 82 22V80" fill="none" stroke="#4FD1FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Mimac</span>
+        </a>
+        <p class="footer-blurb">Remote desktop rebuilt for iPad Pro and Magic Keyboard. One purchase, forever.</p>
+        <p class="footer-blurb"><a href="mailto:support@mimac.ai">support@mimac.ai</a></p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <ul>
+          <li><a href="https://apps.apple.com/app/idTBD">Download on the App Store</a></li>
+          <li><a href="/mac/">Mimac Connect for Mac</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/support/">Support</a></li>
+          <li><a href="/press/">Press kit</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Compare</h3>
+        <ul>
+          <li><a href="/compare/workbench/">Mimac vs Workbench</a></li>
+          <li><a href="/compare/jump-desktop/">Mimac vs Jump Desktop</a></li>
+          <li><a href="/compare/screens/">Mimac vs Screens 5</a></li>
+          <li><a href="/compare/luna-display/">Mimac vs Luna Display</a></li>
+          <li><a href="/compare/splashtop/">Mimac vs Splashtop</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides</h3>
+        <ul>
+          <li><a href="/guides/headless-mac-mini-ipad-pro/">Headless Mac mini + iPad Pro</a></li>
+          <li><a href="/guides/remote-mac-with-tailscale/">Remote Mac with Tailscale</a></li>
+          <li><a href="/guides/magic-keyboard-shortcuts/">Magic Keyboard shortcuts</a></li>
+          <li><a href="/guides/mac-mini-for-ai-agents/">Mac mini for AI agents</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Justin Ponczek. iPad, iPad Pro, Mac, Mac mini, Mac Studio, macOS and Magic Keyboard are trademarks of Apple Inc. Mimac is not affiliated with Apple.</span>
+      <span><a href="/press/">Engineered with Claude</a></span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

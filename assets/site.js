@@ -1,9 +1,6 @@
 /* Mimac site: three small enhancements. Everything works without this file. */
 (function () {
   "use strict";
-  var root = document.documentElement;
-  root.classList.add("js");
-
   /* Mobile navigation toggle */
   var toggle = document.querySelector(".nav-toggle");
   var menu = document.getElementById("menu");

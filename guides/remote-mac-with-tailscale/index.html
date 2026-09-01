@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reach your Mac from anywhere with Tailscale and Mimac</title>
+<meta name="description" content="Use Mimac outside your home network: install Tailscale on your Mac and iPad, join the same tailnet, and connect by name. Step by step, honest expectations.">
+<link rel="canonical" href="https://mimac.ai/guides/remote-mac-with-tailscale/">
+<meta name="theme-color" content="#FBFBFD" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0D12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- <meta name="apple-itunes-app" content="app-id=TBD"> -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Mimac">
+<meta property="og:title" content="Reach your Mac from anywhere with Tailscale and Mimac">
+<meta property="og:description" content="Use Mimac outside your home network: install Tailscale on your Mac and iPad, join the same tailnet, and connect by name. Step by step, with what to expect on the road.">
+<meta property="og:url" content="https://mimac.ai/guides/remote-mac-with-tailscale/">
+<meta property="og:image" content="https://mimac.ai/assets/og/guide-remote-mac-with-tailscale.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Reach your Mac from anywhere with Tailscale and Mimac">
+<meta name="twitter:description" content="Use Mimac outside your home network: install Tailscale on your Mac and iPad, join the same tailnet, and connect by name. Step by step, with what to expect on the road.">
+<meta name="twitter:image" content="https://mimac.ai/assets/og/guide-remote-mac-with-tailscale.png">
+<link rel="stylesheet" href="/assets/site.css">
+<noscript><style>.nav-toggle{display:none!important}.menu{display:flex!important;position:static!important;flex-direction:row!important;flex-wrap:wrap;gap:.6rem 1.2rem!important;padding:0 0 .9rem!important;border:0!important;width:100%}.menu a{padding:0!important;border:0!important;font-size:.95rem!important}.nav-inner{flex-wrap:wrap}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Mimac", "item": "https://mimac.ai/"},
+        {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://mimac.ai/guides/headless-mac-mini-ipad-pro/"},
+        {"@type": "ListItem", "position": 3, "name": "Remote Mac with Tailscale", "item": "https://mimac.ai/guides/remote-mac-with-tailscale/"}
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "name": "Reach your Mac from anywhere with Mimac and Tailscale",
+      "description": "Use Mimac outside your home network by putting the Mac and the iPad on the same Tailscale tailnet.",
+      "totalTime": "PT15M",
+      "supply": [{"@type": "HowToSupply", "name": "Tailscale (free personal plan)"}, {"@type": "HowToSupply", "name": "Mimac Connect for Mac and Mimac for iPad, already paired"}],
+      "step": [
+        {"@type": "HowToStep", "name": "Install Tailscale on the Mac", "text": "Download Tailscale from tailscale.com or the Mac App Store, sign in, and leave it running.", "url": "https://mimac.ai/guides/remote-mac-with-tailscale/#step1"},
+        {"@type": "HowToStep", "name": "Install Tailscale on the iPad", "text": "Install Tailscale from the App Store, sign in with the same account, and allow the VPN configuration.", "url": "https://mimac.ai/guides/remote-mac-with-tailscale/#step2"},
+        {"@type": "HowToStep", "name": "Find the Mac's Tailscale name", "text": "Read the machine name or 100.x.y.z address from the Tailscale menu-bar item on the Mac.", "url": "https://mimac.ai/guides/remote-mac-with-tailscale/#step3"},
+        {"@type": "HowToStep", "name": "Connect from Mimac", "text": "Add the Mac in Mimac by its Tailscale name or address and connect.", "url": "https://mimac.ai/guides/remote-mac-with-tailscale/#step4"},
+        {"@type": "HowToStep", "name": "Keep the Mac on the tailnet", "text": "Disable key expiry for the Mac in the Tailscale admin console and keep the Mac from sleeping.", "url": "https://mimac.ai/guides/remote-mac-with-tailscale/#step5"},
+        {"@type": "HowToStep", "name": "Tune for the road", "text": "Lower the bitrate cap in Mimac's tuning panel on slow links; expect frame rate to follow your connection.", "url": "https://mimac.ai/guides/remote-mac-with-tailscale/#step6"}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="auto">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Mimac home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11141B"/><path d="M18 80V22L50 57 82 22V80" fill="none" stroke="#4FD1FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Mimac</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span></button>
+    <nav id="menu" class="menu" aria-label="Primary">
+      <a href="/mac/">Mac app</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/#compare">Compare</a>
+      <a href="/guides/headless-mac-mini-ipad-pro/">Guides</a>
+      <a href="/support/">Support</a>
+      <a class="btn btn-sm" href="https://apps.apple.com/app/idTBD">App Store</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Mimac</a><span>/</span>Guides<span>/</span>Remote Mac with Tailscale</p>
+    <h1>Reach your Mac from anywhere with Tailscale</h1>
+    <p class="lead">Mimac has no relay servers. On your own network the iPad and the Mac talk directly; away from home they need a private path between them. Tailscale provides one, for free, in about fifteen minutes. This guide covers the setup, the one setting that matters for a headless Mac, and what to expect from the connection.</p>
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap layout-aside">
+    <div class="prose">
+      <h2>Why Tailscale, and what it is</h2>
+      <p>Tailscale is a mesh VPN built on WireGuard. Each of your devices gets a stable private address, and traffic between them is encrypted end to end and, wherever possible, sent directly from one device to the other. The personal plan is free. It is not made by us, and it has its own <a href="https://tailscale.com/privacy-policy" rel="noopener">privacy policy</a>; Mimac adds its own end-to-end encryption on top, so your screen is encrypted twice.</p>
+      <p>The alternative would have been a relay of our own, which is what most remote desktop apps run. We chose not to: a relay means your screen passes through someone else's server, it costs money that turns into a subscription, and it adds latency. Tailscale gives you the same convenience with a company whose whole product is the network.</p>
+
+      <h2>Steps</h2>
+      <ol class="steps">
+        <li id="step1"><strong>Install Tailscale on the Mac.</strong><p>Download it from <a href="https://tailscale.com/download" rel="noopener">tailscale.com</a> or the Mac App Store, open it, and sign in with the identity provider of your choice. Tailscale runs in the menu bar and starts at login. Make sure <em>Start at login</em> is on in its settings; a headless Mac needs it running before anyone has touched it.</p></li>
+        <li id="step2"><strong>Install Tailscale on the iPad.</strong><p>Install Tailscale from the App Store and sign in with the same account. iPadOS asks to add a VPN configuration; allow it. Once the toggle is on, the iPad can reach every device on your tailnet whether it is on cellular, hotel Wi-Fi or your own network.</p></li>
+        <li id="step3"><strong>Find the Mac's Tailscale name.</strong><p>Click the Tailscale icon in the Mac's menu bar. The Mac is listed by its machine name, for example <code>mac-mini</code>, next to an address that starts with <code>100.</code>. With MagicDNS on, which it is by default for new tailnets, the name alone resolves from the iPad. Either works in Mimac.</p></li>
+        <li id="step4"><strong>Connect from Mimac.</strong><p>Open Mimac on the iPad, add a host, and type the Tailscale name or address. If you paired on your home network already, the connection completes without a code. If this is the first time these two devices meet, the Mac shows a six-digit pairing code in its menu-bar item, so pair once while you can see the Mac's screen.</p></li>
+        <li id="step5"><strong>Keep the Mac on the tailnet.</strong><p>Tailscale asks devices to re-authenticate periodically. On a Mac with a person in front of it that is a click; on a headless Mac it is a dead connection. In the Tailscale admin console, open the Mac's machine entry and choose <em>Disable key expiry</em>. Then make sure the Mac does not sleep: System Settings &rarr; Energy, <em>Prevent automatic sleeping when the display is off</em> and <em>Wake for network access</em>.</p></li>
+        <li id="step6"><strong>Tune for the road.</strong><p>Mimac's defaults are chosen for a local network. On a slower link, open the tuning panel and lower the bitrate cap; Mimac also adapts on its own and recovers lost packets rather than stalling. Sessions over Tailscale start, resume and reconnect exactly as they do at home.</p></li>
+      </ol>
+
+      <h2>What to expect away from home</h2>
+      <p>Honesty first: 120 fps is a local-network figure. Away from home, frame rate and responsiveness follow your connection. A good home fibre link at one end and a hotel's Wi-Fi at the other is very usable for code, writing, mail and a terminal; it is not the same as sitting on the sofa at home, and no remote desktop app can make it so.</p>
+      <p>Tailscale tries to connect your two devices directly. When a network in between will not allow that, it falls back to one of its own relay servers. That relay is Tailscale's, not ours, it only ever carries encrypted bytes, and it adds some latency. Tailscale shows which kind of connection you have in its status; direct is what you want.</p>
+
+      <h2>When the Mac does not appear</h2>
+      <ul>
+        <li>Is Tailscale connected on both devices? Both toggles on, same account.</li>
+        <li>Is the Mac awake? A sleeping Mac is not on any network. See step five.</li>
+        <li>Did the Mac's key expire? Check the admin console; disabling expiry prevents this.</li>
+        <li>Is Mimac Connect running on the Mac? It starts at login, and before login if you installed that component.</li>
+        <li>On cellular, some carriers block VPN traffic on certain plans. Try Wi-Fi to rule it out.</li>
+      </ul>
+      <p>Still stuck? Write to <a href="mailto:support@mimac.ai">support@mimac.ai</a> with the Tailscale status from both devices.</p>
+
+      <h2>How Mimac compares for this setup</h2>
+      <div class="table-wrap">
+        <table class="compare compare-4">
+          <thead><tr><th scope="col">&nbsp;</th><th scope="col" class="m">Mimac</th><th scope="col">Workbench</th><th scope="col">Jump Desktop</th><th scope="col">Screens 5</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Display on a headless Mac</th><td class="m"><span class="y">iPad's exact resolution</span></td><td>Not stated</td><td>1080p virtual display</td><td>Needs a display or dummy plug</td></tr>
+            <tr><th scope="row">Frame rate</th><td class="m"><span class="y">120 fps</span> on LAN</td><td>Not stated</td><td>60 fps</td><td>VNC-class</td></tr>
+            <tr><th scope="row">Trackpad gestures</th><td class="m"><span class="y">Native pinch and momentum</span></td><td>Zoom and pan</td><td>Basic</td><td>Basic</td></tr>
+            <tr><th scope="row">iPad mic on the Mac</th><td class="m"><span class="y">Yes</span></td><td>Built-in speech-to-text</td><td><span class="n">No</span></td><td><span class="n">No</span></td></tr>
+            <tr><th scope="row">Screenshot to Mac clipboard</th><td class="m"><span class="y">Yes</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
+            <tr><th scope="row">Remote path</th><td class="m">Your Tailscale; no relay</td><td>Vendor relay</td><td>Vendor relay</td><td>Vendor relay</td></tr>
+            <tr><th scope="row">Price</th><td class="m"><span class="y">$49.99 once</span></td><td>$79.99 per year</td><td>$14.99 once</td><td>$29.99 per year or $179.99 lifetime</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="footnote">Prices and facts as of September 1, 2026. Full comparisons: <a href="/compare/workbench/">Mimac vs Workbench</a>, <a href="/compare/jump-desktop/">Jump Desktop</a>, <a href="/compare/screens/">Screens 5</a>. Pricing details on the <a href="/pricing/">pricing page</a>.</p>
+    </div>
+    <aside class="aside">
+      <div class="card">
+        <h3>Get Mimac</h3>
+        <p>Free to try for seven days. $49.99 once after that. Mimac Connect for Mac is free.</p>
+        <a class="btn" href="https://apps.apple.com/app/idTBD">Download on the App Store</a>
+        <a class="btn btn-ghost" href="/mac/">Get Mimac Connect for Mac</a>
+        <h3 style="margin-top:1.5rem">More guides</h3>
+        <ul>
+          <li><a href="/guides/headless-mac-mini-ipad-pro/">Headless Mac mini + iPad Pro</a></li>
+          <li><a href="/guides/remote-mac-with-tailscale/">Remote Mac with Tailscale</a></li>
+          <li><a href="/guides/magic-keyboard-shortcuts/">Magic Keyboard shortcuts</a></li>
+          <li><a href="/guides/mac-mini-for-ai-agents/">Mac mini for AI agents</a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+</section>
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Your Mac, at 120 fps, on the iPad Pro.</h2>
+    <p class="lead narrow">One purchase, forever. No subscription, no account, no relay.</p>
+    <div class="cta">
+      <a class="btn btn-lg" href="https://apps.apple.com/app/idTBD">Download on the App Store</a>
+      <a class="btn btn-lg btn-ghost" href="/pricing/">See pricing</a>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/" aria-label="Mimac home">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11141B"/><path d="M18 80V22L50 57 82 22V80" fill="none" stroke="#4FD1FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Mimac</span>
+        </a>
+        <p class="footer-blurb">Remote desktop rebuilt for iPad Pro and Magic Keyboard. One purchase, forever.</p>
+        <p class="footer-blurb"><a href="mailto:support@mimac.ai">support@mimac.ai</a></p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <ul>
+          <li><a href="https://apps.apple.com/app/idTBD">Download on the App Store</a></li>
+          <li><a href="/mac/">Mimac Connect for Mac</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/support/">Support</a></li>
+          <li><a href="/press/">Press kit</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Compare</h3>
+        <ul>
+          <li><a href="/compare/workbench/">Mimac vs Workbench</a></li>
+          <li><a href="/compare/jump-desktop/">Mimac vs Jump Desktop</a></li>
+          <li><a href="/compare/screens/">Mimac vs Screens 5</a></li>
+          <li><a href="/compare/luna-display/">Mimac vs Luna Display</a></li>
+          <li><a href="/compare/splashtop/">Mimac vs Splashtop</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides</h3>
+        <ul>
+          <li><a href="/guides/headless-mac-mini-ipad-pro/">Headless Mac mini + iPad Pro</a></li>
+          <li><a href="/guides/remote-mac-with-tailscale/">Remote Mac with Tailscale</a></li>
+          <li><a href="/guides/magic-keyboard-shortcuts/">Magic Keyboard shortcuts</a></li>
+          <li><a href="/guides/mac-mini-for-ai-agents/">Mac mini for AI agents</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Justin Ponczek. iPad, iPad Pro, Mac, Mac mini, Mac Studio, macOS and Magic Keyboard are trademarks of Apple Inc. Mimac is not affiliated with Apple.</span>
+      <span><a href="/press/">Engineered with Claude</a></span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

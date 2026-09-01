@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mimac support: FAQ and known limitations</title>
+<meta name="description" content="Answers about Mimac requirements, Tailscale, FileVault, Intel Macs, iPhone, multiple monitors, refunds and privacy, plus known limitations and contact.">
+<link rel="canonical" href="https://mimac.ai/support/">
+<meta name="theme-color" content="#FBFBFD" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0B0D12" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- <meta name="apple-itunes-app" content="app-id=TBD"> -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mimac">
+<meta property="og:title" content="Mimac support">
+<meta property="og:description" content="Requirements, FAQ, known limitations, and how to reach us.">
+<meta property="og:url" content="https://mimac.ai/support/">
+<meta property="og:image" content="https://mimac.ai/assets/og/support.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mimac support">
+<meta name="twitter:description" content="Requirements, FAQ, known limitations, and how to reach us.">
+<meta name="twitter:image" content="https://mimac.ai/assets/og/support.png">
+<link rel="stylesheet" href="/assets/site.css">
+<noscript><style>.nav-toggle{display:none!important}.menu{display:flex!important;position:static!important;flex-direction:row!important;flex-wrap:wrap;gap:.6rem 1.2rem!important;padding:0 0 .9rem!important;border:0!important;width:100%}.menu a{padding:0!important;border:0!important;font-size:.95rem!important}.nav-inner{flex-wrap:wrap}</style></noscript>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Mimac", "item": "https://mimac.ai/"},
+        {"@type": "ListItem", "position": 2, "name": "Support", "item": "https://mimac.ai/support/"}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What do I need to run Mimac?", "acceptedAnswer": {"@type": "Answer", "text": "An iPad with an M-series chip (iPad Pro recommended) running iPadOS 26 or later, a trackpad and keyboard such as the Magic Keyboard, and a Mac with Apple silicon running macOS 15 or later with the free Mimac Connect app installed."}},
+        {"@type": "Question", "name": "Do I need Tailscale?", "acceptedAnswer": {"@type": "Answer", "text": "Only away from your own network. On the same Wi-Fi or Ethernet network Mimac connects directly. Elsewhere, install Tailscale on both devices and sign in to the same tailnet; the free personal plan is enough. Mimac has no relay servers of its own."}},
+        {"@type": "Question", "name": "Can Mimac start before I log in to the Mac?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, with the optional Start before login component of Mimac Connect. It requires FileVault to be off, or a Mac that reaches the login window unattended. With FileVault on, a restarted Mac stops at the pre-boot unlock screen, which nothing can reach remotely."}},
+        {"@type": "Question", "name": "Does Mimac work with Intel Macs?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mimac Connect needs Apple silicon (M1 or later) for its low-latency HEVC encoding. Intel support is not planned."}},
+        {"@type": "Question", "name": "Is there an iPhone or Vision Pro app?", "acceptedAnswer": {"@type": "Answer", "text": "Not at launch. Mimac is an iPad app built around a trackpad and keyboard. iPhone and Vision Pro are not supported yet."}},
+        {"@type": "Question", "name": "Does Mimac support multiple monitors?", "acceptedAnswer": {"@type": "Answer", "text": "Not yet. Mimac creates one virtual display sized to your iPad. Other displays attached to the Mac keep working on the Mac, but the iPad shows only Mimac's display."}},
+        {"@type": "Question", "name": "Pinch does nothing after a macOS update. What now?", "acceptedAnswer": {"@type": "Answer", "text": "Open Mimac's tuning panel and switch Pinch delivery to Control+scroll. Mimac normally delivers pinch as a native macOS magnify gesture through an undocumented interface; when a macOS update changes it, the fallback keeps zoom working until Mimac Connect updates."}},
+        {"@type": "Question", "name": "How do refunds work?", "acceptedAnswer": {"@type": "Answer", "text": "Purchases and refunds are handled by Apple. Request one at reportaproblem.apple.com. Apple decides; we cannot see or override refund requests."}},
+        {"@type": "Question", "name": "What does Mimac collect about me?", "acceptedAnswer": {"@type": "Answer", "text": "Nothing. No accounts, no servers, no analytics, no crash-reporting SDKs. Video, audio, clipboard, input and microphone travel only between your own devices, end-to-end encrypted."}},
+        {"@type": "Question", "name": "My Mac does not show up in Mimac.", "acceptedAnswer": {"@type": "Answer", "text": "Check that Mimac Connect is running in the Mac's menu bar, that both devices are on the same network or the same Tailscale tailnet, and that the Mac is awake. If macOS asked about incoming connections for Mimac Connect, allow them. You can always type the Mac's address instead of waiting for discovery."}},
+        {"@type": "Question", "name": "macOS asked for Screen Recording or Accessibility again.", "acceptedAnswer": {"@type": "Answer", "text": "macOS occasionally resets these permissions after an update. Approve them again in System Settings, Privacy & Security. On a headless Mac, do it over macOS Screen Sharing from another Mac, which is why we suggest leaving Screen Sharing enabled as a fallback."}},
+        {"@type": "Question", "name": "Mimac Microphone is missing from the Mac's input devices.", "acceptedAnswer": {"@type": "Answer", "text": "It is an optional installer component; run the Mimac Connect installer again and tick it. The install restarts the Mac's audio system for about two seconds. If it is installed but absent, restarting the Mac restores it."}},
+        {"@type": "Question", "name": "Do I need an HDMI dummy plug?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mimac creates its own display at your iPad's exact resolution. If you have a dummy plug from an earlier setup, remove it; it gives the Mac a second, differently sized display that only gets in the way."}},
+        {"@type": "Question", "name": "How do I unpair an iPad or forget a Mac?", "acceptedAnswer": {"@type": "Answer", "text": "On the Mac, click the Mimac icon in the menu bar to see paired iPads and forget any of them. On the iPad, swipe a Mac in the host list to remove it. Pairing again takes a new six-digit code."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body class="auto">
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Mimac home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11141B"/><path d="M18 80V22L50 57 82 22V80" fill="none" stroke="#4FD1FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Mimac</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span></button>
+    <nav id="menu" class="menu" aria-label="Primary">
+      <a href="/mac/">Mac app</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/#compare">Compare</a>
+      <a href="/guides/headless-mac-mini-ipad-pro/">Guides</a>
+      <a href="/support/">Support</a>
+      <a class="btn btn-sm" href="https://apps.apple.com/app/idTBD">App Store</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="page-head">
+  <div class="wrap">
+    <p class="crumbs"><a href="/">Mimac</a><span>/</span>Support</p>
+    <h1>Support</h1>
+    <p class="lead">Short answers to the questions we get, the limitations we know about, and how to reach a person. Mimac is made by one developer, so replies come from the person who wrote the code.</p>
+  </div>
+</section>
+<section class="page-body">
+  <div class="wrap layout-aside">
+    <div>
+      <h2 id="faq" class="hash-target" style="margin-bottom:1rem">Frequently asked questions</h2>
+      <div class="faq" style="margin:0">
+        <details><summary>What do I need to run Mimac?</summary><div><p>An iPad with an M-series chip (iPad Pro recommended) running iPadOS 26 or later, a trackpad and keyboard such as the Magic Keyboard, and a Mac with Apple silicon running macOS 15 or later with the free <a href="/mac/">Mimac Connect</a> app installed.</p></div></details>
+        <details><summary>Do I need Tailscale?</summary><div><p>Only away from your own network. On the same Wi-Fi or Ethernet network Mimac connects directly. Elsewhere, install Tailscale on both devices and sign in to the same tailnet; the free personal plan is enough. Mimac has no relay servers of its own. <a href="/guides/remote-mac-with-tailscale/">Setup guide.</a></p></div></details>
+        <details><summary>Can Mimac start before I log in to the Mac?</summary><div><p>Yes, with the optional <strong>Start before login</strong> component of Mimac Connect. It requires FileVault to be off, or a Mac that reaches the login window unattended. With FileVault on, a restarted Mac stops at the pre-boot unlock screen, which nothing can reach remotely. <a href="/mac/#components">What the component does.</a></p></div></details>
+        <details><summary>Does Mimac work with Intel Macs?</summary><div><p>No. Mimac Connect needs Apple silicon (M1 or later) for its low-latency HEVC encoding. Intel support is not planned.</p></div></details>
+        <details><summary>Is there an iPhone or Vision Pro app?</summary><div><p>Not at launch. Mimac is an iPad app built around a trackpad and keyboard. iPhone and Vision Pro are not supported yet. If you need them today, <a href="/compare/screens/">Screens 5</a> covers both.</p></div></details>
+        <details><summary>Does Mimac support multiple monitors?</summary><div><p>Not yet. Mimac creates one virtual display sized to your iPad. Other displays attached to the Mac keep working on the Mac, but the iPad shows only Mimac's display.</p></div></details>
+        <details><summary>Pinch does nothing after a macOS update. What now?</summary><div><p>Open Mimac's tuning panel and switch <em>Pinch delivery</em> to <em>Control+scroll</em>. Mimac normally delivers pinch as a native macOS magnify gesture through an undocumented interface; when a macOS update changes it, the fallback keeps zoom working until Mimac Connect updates.</p></div></details>
+        <details><summary>How do refunds work?</summary><div><p>Purchases and refunds are handled by Apple. Request one at <a href="https://reportaproblem.apple.com/" rel="noopener">reportaproblem.apple.com</a>. Apple decides; we cannot see or override refund requests. The free trial exists so you can be sure before you buy.</p></div></details>
+        <details><summary>What does Mimac collect about me?</summary><div><p>Nothing. No accounts, no servers, no analytics, no crash-reporting SDKs. Video, audio, clipboard, input and microphone travel only between your own devices, end-to-end encrypted. <a href="/privacy/">The full policy is short.</a></p></div></details>
+        <details><summary>My Mac does not show up in Mimac.</summary><div><p>Check that Mimac Connect is running in the Mac's menu bar, that both devices are on the same network or the same Tailscale tailnet, and that the Mac is awake. If macOS asked about incoming connections for Mimac Connect, allow them. You can always type the Mac's address instead of waiting for discovery.</p></div></details>
+        <details><summary>macOS asked for Screen Recording or Accessibility again.</summary><div><p>macOS occasionally resets these permissions after an update. Approve them again in System Settings &rarr; Privacy &amp; Security. On a headless Mac, do it over macOS Screen Sharing from another Mac, which is why we suggest leaving Screen Sharing enabled as a fallback.</p></div></details>
+        <details><summary>Mimac Microphone is missing from the Mac's input devices.</summary><div><p>It is an optional installer component; run the Mimac Connect installer again and tick it. The install restarts the Mac's audio system for about two seconds. If it is installed but absent, restarting the Mac restores it.</p></div></details>
+        <details><summary>Do I need an HDMI dummy plug?</summary><div><p>No. Mimac creates its own display at your iPad's exact resolution. If you have a dummy plug from an earlier setup, remove it; it gives the Mac a second, differently sized display that only gets in the way.</p></div></details>
+        <details><summary>How do I unpair an iPad or forget a Mac?</summary><div><p>On the Mac, click the Mimac icon in the menu bar to see paired iPads and forget any of them. On the iPad, swipe a Mac in the host list to remove it. Pairing again takes a new six-digit code.</p></div></details>
+      </div>
+
+      <div class="prose">
+        <h2 id="limitations" class="hash-target">Known limitations</h2>
+        <p>Written down so you can decide with your eyes open.</p>
+        <ul>
+          <li><strong>iPad only.</strong> No iPhone, Mac or Vision Pro client.</li>
+          <li><strong>Apple silicon hosts only.</strong> No Intel Macs, no Windows, no Linux.</li>
+          <li><strong>One display.</strong> The iPad shows Mimac's virtual display; other monitors on the Mac are not mirrored to the iPad.</li>
+          <li><strong>No Apple Pencil pressure.</strong> The Pencil acts as a pointer.</li>
+          <li><strong>Tailscale is required</strong> for use outside your own network. There is no relay of ours, by design.</li>
+          <li><strong>120 fps is a local-network figure.</strong> Over the internet, frame rate follows your connection.</li>
+          <li><strong>The optional components need an administrator password</strong>, and Start before login needs FileVault off.</li>
+          <li><strong>Mimac Connect uses undocumented macOS interfaces</strong> for its virtual display, cursor and gestures. A macOS update can break one until Mimac Connect updates; the app updates itself, and pinch has a built-in fallback.</li>
+          <li><strong>The first connection after installing can take up to a minute</strong> while macOS prepares screen capture. Later connections take a second or two.</li>
+          <li><strong>Brand new.</strong> Mimac shipped in 2026 and has one developer. Bugs will exist; they get fixed fast.</li>
+        </ul>
+
+        <h2 id="contact" class="hash-target">Contact</h2>
+        <p>Email <a href="mailto:support@mimac.ai">support@mimac.ai</a>. Include your iPad model, iPadOS version, the Mac model and macOS version, whether you are on the same network or on Tailscale, and what you expected to happen. If Mimac shows a diagnostics panel with numbers, a screenshot of it helps a lot.</p>
+        <p>For anything else, <a href="mailto:hello@mimac.ai">hello@mimac.ai</a>.</p>
+      </div>
+    </div>
+    <aside class="aside">
+      <div class="card">
+        <h3>On this page</h3>
+        <ul>
+          <li><a href="#faq">Frequently asked questions</a></li>
+          <li><a href="#limitations">Known limitations</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <h3 style="margin-top:1.5rem">Elsewhere</h3>
+        <ul>
+          <li><a href="/mac/">Install Mimac Connect</a></li>
+          <li><a href="/guides/headless-mac-mini-ipad-pro/">Headless Mac mini guide</a></li>
+          <li><a href="/guides/remote-mac-with-tailscale/">Tailscale guide</a></li>
+          <li><a href="/privacy/">Privacy policy</a></li>
+        </ul>
+        <a class="btn btn-ghost" href="mailto:support@mimac.ai">Email support</a>
+      </div>
+    </aside>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/" aria-label="Mimac home">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11141B"/><path d="M18 80V22L50 57 82 22V80" fill="none" stroke="#4FD1FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Mimac</span>
+        </a>
+        <p class="footer-blurb">Remote desktop rebuilt for iPad Pro and Magic Keyboard. One purchase, forever.</p>
+        <p class="footer-blurb"><a href="mailto:support@mimac.ai">support@mimac.ai</a></p>
+      </div>
+      <div>
+        <h3>Product</h3>
+        <ul>
+          <li><a href="https://apps.apple.com/app/idTBD">Download on the App Store</a></li>
+          <li><a href="/mac/">Mimac Connect for Mac</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/support/">Support</a></li>
+          <li><a href="/press/">Press kit</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Compare</h3>
+        <ul>
+          <li><a href="/compare/workbench/">Mimac vs Workbench</a></li>
+          <li><a href="/compare/jump-desktop/">Mimac vs Jump Desktop</a></li>
+          <li><a href="/compare/screens/">Mimac vs Screens 5</a></li>
+          <li><a href="/compare/luna-display/">Mimac vs Luna Display</a></li>
+          <li><a href="/compare/splashtop/">Mimac vs Splashtop</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Guides</h3>
+        <ul>
+          <li><a href="/guides/headless-mac-mini-ipad-pro/">Headless Mac mini + iPad Pro</a></li>
+          <li><a href="/guides/remote-mac-with-tailscale/">Remote Mac with Tailscale</a></li>
+          <li><a href="/guides/magic-keyboard-shortcuts/">Magic Keyboard shortcuts</a></li>
+          <li><a href="/guides/mac-mini-for-ai-agents/">Mac mini for AI agents</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Justin Ponczek. iPad, iPad Pro, Mac, Mac mini, Mac Studio, macOS and Magic Keyboard are trademarks of Apple Inc. Mimac is not affiliated with Apple.</span>
+      <span><a href="/press/">Engineered with Claude</a></span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
