@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mimac: Your Mac, at 120 fps, on the iPad Pro</title>
+<meta name="description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at native resolution, 120 fps, real trackpad gestures. One purchase, forever.">
+<link rel="canonical" href="https://mimac.ai/">
+<meta name="theme-color" content="#0B0D12">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- <meta name="apple-itunes-app" content="app-id=TBD"> -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mimac">
+<meta property="og:title" content="Mimac: Your Mac, at 120 fps, on the iPad Pro">
+<meta property="og:description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at native resolution, 120 fps, real trackpad gestures. One purchase, forever.">
+<meta property="og:url" content="https://mimac.ai/">
+<meta property="og:image" content="https://mimac.ai/assets/og/home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Mimac: Your Mac, at 120 fps, on the iPad Pro">
+<meta name="twitter:description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at native resolution, 120 fps, real trackpad gestures. One purchase, forever.">
+<meta name="twitter:image" content="https://mimac.ai/assets/og/home.png">
+<link rel="stylesheet" href="/assets/site.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://mimac.ai/#org",
+      "name": "Mimac",
+      "url": "https://mimac.ai/",
+      "logo": "https://mimac.ai/assets/press/mimac-icon-1024.png",
+      "email": "support@mimac.ai",
+      "founder": {"@type": "Person", "name": "Justin Ponczek"}
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mimac.ai/#site",
+      "url": "https://mimac.ai/",
+      "name": "Mimac",
+      "publisher": {"@id": "https://mimac.ai/#org"}
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://mimac.ai/#app",
+      "name": "Mimac",
+      "alternateName": "Mimac: Remote Desktop for Mac",
+      "operatingSystem": "iPadOS",
+      "applicationCategory": "UtilitiesApplication",
+      "url": "https://mimac.ai/",
+      "image": "https://mimac.ai/assets/og/home.png",
+      "description": "Mimac turns an iPad Pro and Magic Keyboard into the best display and input device a Mac mini or Mac Studio can have. Native resolution, 120 fps, real macOS trackpad gestures, lossless audio, no accounts, no relay servers, no subscription.",
+      "softwareRequirements": "iPad with an M-series chip running iPadOS 26 or later; a Mac with Apple silicon running macOS 15 or later with the free Mimac Connect app.",
+      "offers": {
+        "@type": "Offer",
+        "price": "49.99",
+        "priceCurrency": "USD",
+        "category": "One-time in-app purchase after a free trial"
+      },
+      "author": {"@id": "https://mimac.ai/#org"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What do I need to run Mimac?", "acceptedAnswer": {"@type": "Answer", "text": "An iPad with an M-series chip (iPad Pro recommended) running iPadOS 26 or later, a trackpad and keyboard such as the Magic Keyboard, and a Mac with Apple silicon running macOS 15 or later with the free Mimac Connect app installed. Intel Macs are not supported."}},
+        {"@type": "Question", "name": "Does Mimac work away from home?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Mimac has no relay servers of its own. On your local network it connects directly. Away from home, install Tailscale on both devices, sign in to the same tailnet, and connect to your Mac's Tailscale name. Tailscale's free personal plan is enough."}},
+        {"@type": "Question", "name": "Can Mimac start before I log in to the Mac?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you install the optional Start before login component of Mimac Connect. It needs FileVault turned off, or a Mac that reaches the login window unattended. A FileVault-protected Mac stops at the pre-boot unlock screen, which no remote desktop app can reach."}},
+        {"@type": "Question", "name": "Does Mimac work with Intel Macs?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mimac Connect requires a Mac with Apple silicon (M1 or later) because it relies on the low-latency HEVC encoder in those chips."}},
+        {"@type": "Question", "name": "Is there an iPhone or Vision Pro app?", "acceptedAnswer": {"@type": "Answer", "text": "Not at launch. Mimac is built for iPad Pro with a trackpad and keyboard. iPhone and Vision Pro are not supported yet."}},
+        {"@type": "Question", "name": "Does Mimac support multiple monitors?", "acceptedAnswer": {"@type": "Answer", "text": "Not yet. Mimac creates one virtual display that matches your iPad exactly."}},
+        {"@type": "Question", "name": "How do refunds work?", "acceptedAnswer": {"@type": "Answer", "text": "Purchases are handled by Apple. Request a refund through Apple's Report a Problem page. Try Mimac free first; the trial is the full app."}},
+        {"@type": "Question", "name": "What does Mimac collect?", "acceptedAnswer": {"@type": "Answer", "text": "Nothing. There are no accounts, no servers and no analytics. Video, audio, clipboard and input travel only between your own devices, end-to-end encrypted."}}
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="/" aria-label="Mimac home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11141B"/><path d="M18 80V22L50 57 82 22V80" fill="none" stroke="#4FD1FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Mimac</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><span></span></button>
+    <nav id="menu" class="menu" aria-label="Primary">
+      <a href="/mac/">Mac app</a>
+      <a href="/pricing/">Pricing</a>
+      <a href="/#compare">Compare</a>
+      <a href="/guides/headless-mac-mini-ipad-pro/">Guides</a>
+      <a href="/support/">Support</a>
+      <a class="btn btn-sm" href="https://apps.apple.com/app/idTBD">App Store</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Remote desktop for iPad Pro + Magic Keyboard</p>
+    <h1>Your Mac, at 120&nbsp;fps, on the iPad&nbsp;Pro.</h1>
+    <p class="lead">Mimac turns an iPad Pro and Magic Keyboard into the best display and input device a Mac mini or Mac Studio can have. Native resolution. Real trackpad gestures. Lossless audio. No account, no relay servers, no subscription.</p>
+    <div class="cta">
+      <a class="btn btn-lg" href="https://apps.apple.com/app/idTBD">Download on the App Store</a>
+      <a class="btn btn-lg btn-ghost" href="/mac/">Get Mimac Connect for Mac</a>
+    </div>
+    <p class="fine"><b>Free to try</b> &middot; <b>$49.99 once</b> &middot; <b>No subscription</b></p>
+    <div class="device">
+      <!-- Real clip goes here: assets/video/hero.mov (HEVC) + hero.mp4 (H.264), 10-20 s, scroll + pinch + Option-Tab. See assets/img/README.md -->
+      <video class="device-screen" autoplay muted loop playsinline poster="/assets/img/scene-desktop.svg" width="1376" height="1032" aria-label="A macOS desktop running on an iPad Pro through Mimac">
+        <source src="/assets/video/hero.mov" type="video/quicktime">
+        <source src="/assets/video/hero.mp4" type="video/mp4">
+      </video>
+      <img class="device-frame" src="/assets/img/ipad-frame.svg" alt="" width="1600" height="1344">
+    </div>
+  </div>
+  <div class="hero-fade"></div>
+</section>
+
+<!-- ===== Proof strip ===== -->
+<section class="proof" aria-label="Key facts">
+  <div class="wrap proof-grid">
+    <div><b>120 fps</b><span>on your local network</span></div>
+    <div><b>1:1</b><span>your iPad's native resolution</span></div>
+    <!-- Latency slot: add "<div><b>N ms</b><span>glass to glass on LAN, measured</span></div>" once MEASURING.md has been run. -->
+    <div><b>48 kHz</b><span>lossless audio, both ways</span></div>
+    <div><b>$49.99</b><span>one purchase, forever</span></div>
+  </div>
+</section>
+
+<!-- ===== Built for iPad Pro + Magic Keyboard ===== -->
+<section class="section">
+  <div class="wrap split">
+    <div class="copy">
+      <p class="eyebrow">Built for iPad Pro and Magic Keyboard</p>
+      <h2>Nothing in the way.</h2>
+      <p class="lead">No on-screen buttons, toolbars or floating controls. Every pixel is your Mac. Mimac's own controls live where iPadOS keeps them: in the menu bar.</p>
+      <ul class="feature-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="7" height="7" rx="1.5"/><rect x="14" y="5" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg><span><strong>Option+Tab is your Mac's app switcher.</strong> Rendered on the iPad with the Mac's live app list and icons, so it appears instantly. Command+Tab stays iPadOS's.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></svg><span><strong>Every keyboard shortcut reaches the Mac,</strong> including the ones iPadOS normally keeps for itself. Command+Space, Command+Q, Control+arrows: they all do what they do at your desk.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/></svg><span><strong>Menus in the iPadOS menu bar.</strong> Connect, disconnect, tuning and diagnostics are one glance away and never cover your work.</span></li>
+      </ul>
+    </div>
+    <div class="media">
+      <div class="device">
+        <img class="device-screen" src="/assets/img/scene-switcher.svg" alt="The Option+Tab app switcher drawn over a macOS desktop inside Mimac" width="1376" height="1032" loading="lazy">
+        <img class="device-frame" src="/assets/img/ipad-frame.svg" alt="" width="1600" height="1344" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Feels like a MacBook ===== -->
+<section class="section section-alt">
+  <div class="wrap split split-rev">
+    <div class="copy">
+      <p class="eyebrow">Feels like a MacBook</p>
+      <h2>Gestures that behave.</h2>
+      <p class="lead">Two-finger scrolling with real momentum. Pinch to zoom in Figma, Photoshop and Maps, delivered to macOS as genuine magnify gestures rather than fake keystrokes. Pointer precision, click, drag, right-click.</p>
+      <ul class="feature-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v16M8 8l4-4 4 4M8 16l4 4 4-4"/></svg><span><strong>Scroll phases and momentum</strong> tuned against a MacBook trackpad, so flicks coast and stop the way you expect.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M4 4l4 4M20 4l-4 4M4 20l4-4M20 20l-4-4"/></svg><span><strong>Pinch is a real magnify event,</strong> so apps that zoom on a MacBook zoom here. If a macOS update ever changes that, a Control+scroll fallback is one switch away.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 3l14 9-6 1.5L9 20z"/></svg><span><strong>A cursor that looks right.</strong> The Mac's own cursor artwork, at the right size, at 120 Hz.</span></li>
+      </ul>
+    </div>
+    <div class="media">
+      <div class="device">
+        <!-- Real clip slot: assets/video/gestures.mp4 (+ .mov), 10-20 s screen recording of scroll + pinch. Swap this <img> for a muted, looping <video> with the same class and poster. -->
+        <img class="device-screen" src="/assets/img/scene-pinch.svg" alt="A design canvas mid-pinch inside Mimac, with two touch points spreading apart" width="1376" height="1032" loading="lazy">
+        <img class="device-frame" src="/assets/img/ipad-frame.svg" alt="" width="1600" height="1344" loading="lazy">
+      </div>
+      <p class="caption">Clips are captured at 60 fps by iPadOS. Mimac runs at 120.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Pixel-perfect, 120 fps ===== -->
+<section class="section">
+  <div class="section-head">
+    <p class="eyebrow">Pixel-perfect, 120 fps</p>
+    <h2>The iPad Pro is the best display your Mac mini never had.</h2>
+    <p class="lead">Mimac creates a virtual display on your Mac at your iPad's exact native resolution: 2752&times;2064 on the 13-inch iPad Pro, 2420&times;1668 on the 11-inch. Your Mac renders <em>for</em> your iPad, pixel for pixel. No scaling, no soft text.</p>
+  </div>
+  <div class="wrap">
+    <svg class="diagram" viewBox="0 0 1120 300" role="img" aria-labelledby="dg1" style="max-width:900px;margin:0 auto">
+      <title id="dg1">The Mac renders a 2752 by 2064 display and the iPad shows every one of those pixels, one to one, at 120 Hz</title>
+      <defs>
+        <pattern id="px" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="none" stroke="#4FD1FF" stroke-opacity="0.25" stroke-width="0.6"/></pattern>
+      </defs>
+      <g font-family="-apple-system, 'SF Pro Text', Inter, system-ui, sans-serif">
+        <rect x="20" y="30" width="360" height="180" rx="16" fill="#171B25" stroke="#2A2F3A"/>
+        <rect x="60" y="60" width="280" height="120" rx="6" fill="#0B0D12" stroke="#3A3F4A"/>
+        <rect x="60" y="60" width="280" height="120" rx="6" fill="url(#px)"/>
+        <text x="200" y="128" text-anchor="middle" fill="#F2F4F8" font-size="26" font-weight="700" letter-spacing="-1">2752 &#215; 2064</text>
+        <text x="200" y="250" text-anchor="middle" fill="#A9B1BF" font-size="17">Your Mac renders a display this size</text>
+        <path d="M410 120h290" stroke="#4FD1FF" stroke-width="2" stroke-dasharray="6 6"/>
+        <path d="M690 108l14 12-14 12" fill="none" stroke="#4FD1FF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="555" y="100" text-anchor="middle" fill="#4FD1FF" font-size="15" font-weight="600" letter-spacing="1">HEVC, 120 Hz</text>
+        <text x="555" y="150" text-anchor="middle" fill="#737B8A" font-size="14">1 pixel in = 1 pixel out</text>
+        <rect x="740" y="30" width="360" height="180" rx="16" fill="#171B25" stroke="#2A2F3A"/>
+        <rect x="780" y="60" width="280" height="120" rx="6" fill="#0B0D12" stroke="#3A3F4A"/>
+        <rect x="780" y="60" width="280" height="120" rx="6" fill="url(#px)"/>
+        <text x="920" y="128" text-anchor="middle" fill="#F2F4F8" font-size="26" font-weight="700" letter-spacing="-1">2752 &#215; 2064</text>
+        <text x="920" y="250" text-anchor="middle" fill="#A9B1BF" font-size="17">Your 13-inch iPad Pro shows every pixel</text>
+      </g>
+    </svg>
+    <div class="cards" style="margin-top:3rem">
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
+        <h3>120 fps, end to end</h3>
+        <p>Capture, encode, decode and display are all pinned to 120. On your local network, motion on the iPad matches motion on the Mac. Over the internet it depends on your connection.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <h3>Text as sharp as the desk</h3>
+        <p>Because the Mac draws at your iPad's resolution, there is no resampling step. Menus, code and type look the way they do on a Studio Display.</p>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        <h3>Thirty tuning controls</h3>
+        <p>Bitrate, scroll momentum, pinch delivery, prediction and more, all adjustable in the app. The defaults are tuned for a Mac mini on Wi-Fi 6; the rest is yours.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Sound and voice ===== -->
+<section class="section section-alt">
+  <div class="wrap split">
+    <div class="copy">
+      <p class="eyebrow">Sound and voice</p>
+      <h2>Lossless audio. Your voice on the Mac.</h2>
+      <p class="lead">Mimac streams your Mac's audio as 48 kHz PCM, uncompressed. In the other direction, your iPad's microphone appears on the Mac as an input device called Mimac Microphone.</p>
+      <ul class="feature-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"/></svg><span><strong>Dictation apps just work.</strong> Wispr Flow, OpenWhispr and macOS dictation hear you exactly as they do at your desk, because they see a real microphone.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M9 21h6"/></svg><span><strong>The Magic Keyboard's dictation key works too.</strong> With a hardware keyboard attached, what you say arrives on the Mac as typed text.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><path d="M9 12h6"/></svg><span><strong>Optional, and honest about it.</strong> Mimac Microphone is an audio driver, installed only if you tick it in the Mac installer. Skip it and everything else still works.</span></li>
+      </ul>
+    </div>
+    <div class="media">
+      <div class="device">
+        <img class="device-screen" src="/assets/img/scene-dictation.svg" alt="A text editor receiving dictated text inside Mimac, with Mimac Microphone selected as the Mac's input device" width="1376" height="1032" loading="lazy">
+        <img class="device-frame" src="/assets/img/ipad-frame.svg" alt="" width="1600" height="1344" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Headless Mac minis and agent boxes ===== -->
+<section class="section" id="headless">
+  <div class="wrap split split-rev">
+    <div class="copy">
+      <p class="eyebrow">Made for headless Mac minis and agent boxes</p>
+      <h2>The Mac in the closet, finally usable.</h2>
+      <p class="lead">A Mac mini running Claude Code, Cursor or a build farm does not need a monitor. It needs a way to check in that feels like sitting down at it.</p>
+      <ul class="feature-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v9M6.3 6.3a8 8 0 1011.4 0"/></svg><span><strong>Starts before login.</strong> Reboot the Mac remotely and Mimac Connect is waiting at the login window. Optional component; needs FileVault off or a Mac that reaches the login window unattended.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg><span><strong>Screenshot to the Mac's clipboard.</strong> Drag a rectangle on the glass and it lands on your Mac's clipboard, ready to paste into Claude, Cursor or ChatGPT. Double-tap for a quick snapshot of an area.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 11-2.3-5.7M20 4v5h-5"/></svg><span><strong>Instant resume.</strong> Switch to another iPad app and back, and you are reconnected without a reconnect dance. Wi-Fi blips are absorbed, not surfaced.</span></li>
+      </ul>
+      <p style="margin-top:1.5rem"><a href="/guides/mac-mini-for-ai-agents/">Read the guide: a Mac mini for AI agents &rarr;</a></p>
+    </div>
+    <div class="media">
+      <div class="device">
+        <!-- Real clip slot: assets/video/resume.mp4 (+ .mov), 10-20 s, switch away from Mimac and back. -->
+        <img class="device-screen" src="/assets/img/scene-agents.svg" alt="Two terminals and a chat window inside Mimac, with a screenshot rectangle being dragged over the terminal" width="1376" height="1032" loading="lazy">
+        <img class="device-frame" src="/assets/img/ipad-frame.svg" alt="" width="1600" height="1344" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Away from home ===== -->
+<section class="section section-alt">
+  <div class="wrap split">
+    <div class="copy">
+      <p class="eyebrow">Away from home</p>
+      <h2>No relay. Your network, or your tailnet.</h2>
+      <p class="lead">Mimac has no servers. On your local network the iPad talks to the Mac directly. Away from home, it rides your Tailscale network, end-to-end encrypted, with nothing of ours in the middle.</p>
+      <ul class="feature-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg><span><strong>Tailscale on both devices is required for off-network use.</strong> Its free personal plan is enough. Install it on the Mac and the iPad, sign in to the same tailnet, and enter your Mac's Tailscale name in Mimac.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg><span><strong>Encrypted on every path.</strong> Pairing is a one-time six-digit code shown on the Mac. Keys stay in the Keychain on both devices.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg><span><strong>Frame rate on the road depends on your connection.</strong> Mimac adapts bitrate and recovers lost packets, but 120 fps is a local-network figure. We say so.</span></li>
+      </ul>
+      <p style="margin-top:1.5rem"><a href="/guides/remote-mac-with-tailscale/">Set it up step by step &rarr;</a></p>
+    </div>
+    <div class="media">
+      <svg class="diagram" viewBox="0 0 560 360" role="img" aria-labelledby="dg2">
+        <title id="dg2">The iPad and the Mac connect directly on the local network, or through the user's own Tailscale tailnet. There are no Mimac servers.</title>
+        <g font-family="-apple-system, 'SF Pro Text', Inter, system-ui, sans-serif">
+          <rect x="30" y="90" width="150" height="112" rx="14" fill="#171B25" stroke="#3A3F4A"/>
+          <rect x="44" y="102" width="122" height="88" rx="6" fill="#0B0D12"/>
+          <rect x="52" y="110" width="106" height="8" rx="2" fill="#2A2F3A"/>
+          <rect x="52" y="124" width="60" height="50" rx="4" fill="#1E2330"/>
+          <rect x="118" y="124" width="40" height="50" rx="4" fill="#1E2330"/>
+          <text x="105" y="236" text-anchor="middle" fill="#A9B1BF" font-size="15">iPad Pro, anywhere</text>
+          <rect x="380" y="118" width="150" height="56" rx="14" fill="#171B25" stroke="#3A3F4A"/>
+          <circle cx="400" cy="146" r="3" fill="#4FD1FF"/>
+          <text x="455" y="236" text-anchor="middle" fill="#A9B1BF" font-size="15">Mac mini at home</text>
+          <path d="M180 146C250 146 250 146 280 146S310 146 380 146" fill="none" stroke="#4FD1FF" stroke-width="3"/>
+          <path d="M180 146C250 146 250 146 280 146S310 146 380 146" fill="none" stroke="#4FD1FF" stroke-opacity="0.25" stroke-width="14"/>
+          <rect x="225" y="126" width="110" height="40" rx="20" fill="#0B0D12" stroke="#4FD1FF"/>
+          <text x="280" y="151" text-anchor="middle" fill="#4FD1FF" font-size="14" font-weight="600">encrypted</text>
+          <text x="280" y="290" text-anchor="middle" fill="#F2F4F8" font-size="16" font-weight="600">Local network, or your Tailscale tailnet</text>
+          <text x="280" y="316" text-anchor="middle" fill="#737B8A" font-size="14">No Mimac servers. No account. Nothing to sign up for.</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Comparison ===== -->
+<section class="section hash-target" id="compare">
+  <div class="section-head">
+    <p class="eyebrow">How it compares</p>
+    <h2>Modern, one-time, iPad-Pro-native. Nobody else sells that.</h2>
+    <p class="lead">The incumbent has not been updated in years. The modern challenger is a subscription. Here is the honest table. Click a row to keep it highlighted.</p>
+  </div>
+  <div class="wrap">
+    <div class="table-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th scope="col">Feature</th>
+            <th scope="col" class="m">Mimac</th>
+            <th scope="col">Workbench</th>
+            <th scope="col">Jump Desktop</th>
+            <th scope="col">Screens 5</th>
+            <th scope="col">Splashtop</th>
+            <th scope="col">Luna Display</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Native-resolution rendering</th><td class="m"><span class="y">Yes</span>, your iPad's exact resolution</td><td>Not stated</td><td>1080p virtual display</td><td>Mirrors the Mac's display</td><td>Mirrors the Mac's display</td><td>Not stated</td></tr>
+          <tr><th scope="row">Frame rate</th><td class="m"><span class="y">120 fps</span> on LAN</td><td>Not stated</td><td>60 fps (Fluid)</td><td>VNC</td><td>Not stated</td><td>Not stated</td></tr>
+          <tr><th scope="row">Real macOS pinch and momentum</th><td class="m"><span class="y">Yes</span>, native magnify events</td><td>Zoom and pan</td><td>Basic; pinch is not native magnify</td><td>Basic</td><td>Basic</td><td>Direct touch on a display</td></tr>
+          <tr><th scope="row">No on-screen chrome</th><td class="m"><span class="y">Yes</span>, controls in the iPadOS menu bar</td><td>Not verified</td><td>Not verified</td><td>Not verified</td><td>Not verified</td><td>Not verified</td></tr>
+          <tr><th scope="row">Lossless audio</th><td class="m"><span class="y">Yes</span>, 48 kHz PCM</td><td>Audio, codec not stated</td><td>64 kbps compressed</td><td><span class="n">No audio</span></td><td>Audio, codec not stated</td><td><span class="n">n/a</span></td></tr>
+          <tr><th scope="row">Mic passthrough for dictation apps</th><td class="m"><span class="y">Yes</span>, Mimac Microphone</td><td>Built-in speech-to-text</td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
+          <tr><th scope="row">Screenshot to Mac clipboard</th><td class="m"><span class="y">Yes</span>, drag or double-tap</td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
+          <tr><th scope="row">Headless Mac, no monitor</th><td class="m"><span class="y">Yes</span>, and can start before login</td><td>Yes</td><td>Own 1080p virtual display</td><td>Needs a display or dummy plug</td><td><span class="n">No</span></td><td>Yes (Headless Mode)</td></tr>
+          <tr><th scope="row">Account or vendor relay</th><td class="m"><span class="y">None</span>. Direct on LAN; your Tailscale for remote</td><td>Vendor relay, 11 regions</td><td>Vendor relay; Gmail-based setup</td><td>Screens Connect relay</td><td>Vendor relay</td><td>Same network</td></tr>
+          <tr><th scope="row">Pricing model</th><td class="m"><span class="y">$49.99 once</span>, free trial</td><td>$14.99/mo or $79.99/yr</td><td>$14.99 once</td><td>$29.99/yr or $179.99 lifetime</td><td>Free on LAN; $23.99/yr remote</td><td>$89.99 hardware, once</td></tr>
+          <tr><th scope="row">Last iPad app update</th><td class="m">New for 2026</td><td>Aug 19, 2026</td><td>Oct 30, 2023</td><td>Jul 30, 2026</td><td>Jul 21, 2026</td><td>Jun 9, 2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="footnote">Prices and facts as of September 1, 2026, from each vendor's App Store listing and website. "Not stated" means the vendor does not publish it; "not verified" means we have not checked it ourselves; "&mdash;" means not offered as far as we can tell. Mimac's 120 fps figure is on a local network. Full comparisons: <a href="/compare/workbench/">Workbench</a>, <a href="/compare/jump-desktop/">Jump Desktop</a>, <a href="/compare/screens/">Screens 5</a>, <a href="/compare/splashtop/">Splashtop</a>, <a href="/compare/luna-display/">Luna Display</a>.</p>
+  </div>
+</section>
+
+<!-- ===== Pricing ===== -->
+<section class="section section-alt hash-target" id="pricing">
+  <div class="section-head">
+    <p class="eyebrow">Pricing</p>
+    <h2>Free to try. $49.99 once.</h2>
+    <p class="lead">Less than one year of the subscription alternative. Every future update included.</p>
+  </div>
+  <div class="wrap">
+    <div class="price-card">
+      <p class="price"><sup>$</sup>49<sup>.99</sup></p>
+      <p class="price-sub">One purchase, forever. No subscription, no account.</p>
+      <span class="launch">Launch price: $39.99 for the first 30 days</span>
+      <ul class="price-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><strong>Free download, full-feature trial.</strong> Seven days unlimited after your first connection, then sessions are capped at ten minutes until you unlock.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><strong>Family Sharing.</strong> One purchase covers everyone in your family group.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><strong>Mimac Connect for Mac is free.</strong> Install it on as many Macs as you like.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span><strong>Refunds through Apple.</strong> Purchases and receipts are handled by the App Store.</span></li>
+      </ul>
+      <a class="btn btn-lg" href="https://apps.apple.com/app/idTBD">Download on the App Store</a>
+      <p class="fine">Details on the <a href="/pricing/">pricing page</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section hash-target" id="faq">
+  <div class="section-head">
+    <p class="eyebrow">Questions</p>
+    <h2>The honest FAQ.</h2>
+  </div>
+  <div class="wrap">
+    <div class="faq">
+      <details>
+        <summary>What do I need to run Mimac?</summary>
+        <div><p>An iPad with an M-series chip (iPad Pro recommended) running iPadOS 26 or later, a trackpad and keyboard such as the Magic Keyboard, and a Mac with Apple silicon running macOS 15 or later with the free <a href="/mac/">Mimac Connect</a> app installed. Intel Macs are not supported.</p></div>
+      </details>
+      <details>
+        <summary>Does Mimac work away from home?</summary>
+        <div><p>Yes. Mimac has no relay servers of its own. On your local network it connects directly. Away from home, install Tailscale on both devices, sign in to the same tailnet, and connect to your Mac's Tailscale name. Tailscale's free personal plan is enough. <a href="/guides/remote-mac-with-tailscale/">Step-by-step guide.</a></p></div>
+      </details>
+      <details>
+        <summary>Can Mimac start before I log in to the Mac?</summary>
+        <div><p>Yes, if you install the optional "Start before login" component of Mimac Connect. It needs FileVault turned off, or a Mac that reaches the login window unattended. A FileVault-protected Mac stops at the pre-boot unlock screen, which no remote desktop app can reach.</p></div>
+      </details>
+      <details>
+        <summary>Does Mimac work with Intel Macs?</summary>
+        <div><p>No. Mimac Connect requires a Mac with Apple silicon (M1 or later) because it relies on the low-latency HEVC encoder in those chips.</p></div>
+      </details>
+      <details>
+        <summary>Is there an iPhone or Vision Pro app?</summary>
+        <div><p>Not at launch. Mimac is built for iPad Pro with a trackpad and keyboard. iPhone and Vision Pro are not supported yet.</p></div>
+      </details>
+      <details>
+        <summary>Does Mimac support multiple monitors?</summary>
+        <div><p>Not yet. Mimac creates one virtual display that matches your iPad exactly.</p></div>
+      </details>
+      <details>
+        <summary>How do refunds work?</summary>
+        <div><p>Purchases are handled by Apple. Request a refund through Apple's <a href="https://reportaproblem.apple.com/" rel="noopener">Report a Problem</a> page. Try Mimac free first; the trial is the full app.</p></div>
+      </details>
+      <details>
+        <summary>What does Mimac collect?</summary>
+        <div><p>Nothing. There are no accounts, no servers and no analytics. Video, audio, clipboard and input travel only between your own devices, end-to-end encrypted. <a href="/privacy/">Read the privacy policy.</a></p></div>
+      </details>
+    </div>
+    <p class="center" style="margin-top:2rem"><a href="/support/">More questions and known limitations on the support page &rarr;</a></p>
+  </div>
+</section>
+
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/" aria-label="Mimac home">
+          <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#11141B"/><path d="M18 80V22L50 57 82 22V80" fill="none" stroke="#4FD1FF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Mimac</span>
+        </a>
+        <p class="footer-blurb">Remote desktop rebuilt for iPad Pro and Magic Keyboard. One purchase, forever.</p>
+        <p class="footer-blurb"><a href="mailto:support@mimac.ai">support@mimac.ai</a></p>
+      </div>
+      <div>
+        <h4>Product</h4>
+        <ul>
+          <li><a href="https://apps.apple.com/app/idTBD">Download on the App Store</a></li>
+          <li><a href="/mac/">Mimac Connect for Mac</a></li>
+          <li><a href="/pricing/">Pricing</a></li>
+          <li><a href="/support/">Support</a></li>
+          <li><a href="/press/">Press kit</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Compare</h4>
+        <ul>
+          <li><a href="/compare/workbench/">Mimac vs Workbench</a></li>
+          <li><a href="/compare/jump-desktop/">Mimac vs Jump Desktop</a></li>
+          <li><a href="/compare/screens/">Mimac vs Screens 5</a></li>
+          <li><a href="/compare/luna-display/">Mimac vs Luna Display</a></li>
+          <li><a href="/compare/splashtop/">Mimac vs Splashtop</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Guides</h4>
+        <ul>
+          <li><a href="/guides/headless-mac-mini-ipad-pro/">Headless Mac mini + iPad Pro</a></li>
+          <li><a href="/guides/remote-mac-with-tailscale/">Remote Mac with Tailscale</a></li>
+          <li><a href="/guides/magic-keyboard-shortcuts/">Magic Keyboard shortcuts</a></li>
+          <li><a href="/guides/mac-mini-for-ai-agents/">Mac mini for AI agents</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Justin Ponczek. iPad, iPad Pro, Mac, Mac mini, Mac Studio, macOS and Magic Keyboard are trademarks of Apple Inc. Mimac is not affiliated with Apple.</span>
+      <span><a href="/press/">Engineered with Claude</a></span>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>
