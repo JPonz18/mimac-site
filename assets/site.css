@@ -58,7 +58,7 @@ body {
   color: var(--fg);
   font: 16px/1.6 var(--font);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 img, svg, video { max-width: 100%; height: auto; display: block; }
 a { color: var(--accent); text-decoration: none; }
@@ -121,6 +121,11 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
 .menu a { color: var(--fg-2); font-weight: 500; font-size: 0.95rem; }
 .menu a:hover { color: var(--fg); text-decoration: none; }
 .menu a.btn { color: var(--accent-ink); }
+.menu a[aria-current="page"] { color: var(--fg); position: relative; }
+.menu a[aria-current="page"]::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px;
+  border-radius: 2px; background: var(--accent);
+}
 .nav-toggle { display: none; }
 
 @media (max-width: 860px) {
@@ -133,6 +138,8 @@ kbd { background: var(--bg-3); border: 1px solid var(--line-2); border-bottom-wi
   .nav-open .menu { display: flex; }
   .menu a { padding: 0.85rem 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
   .menu a.btn { margin-top: 1rem; border-bottom: 0; }
+  .menu a[aria-current="page"] { color: var(--accent); }
+  .menu a[aria-current="page"]::after { display: none; }
   .nav-toggle {
     display: inline-flex; align-items: center; justify-content: center;
     width: 44px; height: 44px; margin-right: -10px;
@@ -324,6 +331,7 @@ table.compare { border-collapse: collapse; width: 100%; min-width: 720px; font-s
 .note p { margin-bottom: 0.5em; }
 .note p:last-child { margin: 0; }
 .layout-aside { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+.aside { align-self: stretch; }
 .aside .card { position: sticky; top: 84px; }
 .aside .card .btn { width: 100%; margin-top: 1rem; }
 .aside ul { padding-left: 1.1em; margin: 0.6rem 0 0; }
