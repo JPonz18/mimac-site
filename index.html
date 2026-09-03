@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mimac: Your Mac, at 120 fps, on the iPad Pro</title>
-<meta name="description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at native resolution, 120 fps, real trackpad gestures. One purchase, forever.">
+<meta name="description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at the iPad's exact resolution, 120 fps, no HDMI dongle. One purchase, forever.">
 <link rel="canonical" href="https://mimac.ai/">
 <meta name="theme-color" content="#0B0D12">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -14,14 +14,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mimac">
 <meta property="og:title" content="Mimac: Your Mac, at 120 fps, on the iPad Pro">
-<meta property="og:description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at native resolution, 120 fps, real trackpad gestures. One purchase, forever.">
+<meta property="og:description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at the iPad's exact resolution, 120 fps, no HDMI dongle. One purchase, forever.">
 <meta property="og:url" content="https://mimac.ai/">
 <meta property="og:image" content="https://mimac.ai/assets/og/home.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mimac: Your Mac, at 120 fps, on the iPad Pro">
-<meta name="twitter:description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at native resolution, 120 fps, real trackpad gestures. One purchase, forever.">
+<meta name="twitter:description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at the iPad's exact resolution, 120 fps, no HDMI dongle. One purchase, forever.">
 <meta name="twitter:image" content="https://mimac.ai/assets/og/home.png">
 <link rel="stylesheet" href="/assets/site.css?v=141a55f">
 <noscript><style>.nav-toggle{display:none!important}.menu{display:flex!important;position:static!important;flex-direction:row!important;flex-wrap:wrap;gap:.6rem 1.2rem!important;padding:0 0 .9rem!important;border:0!important;width:100%}.menu a{padding:0!important;border:0!important;font-size:.95rem!important}.nav-inner{flex-wrap:wrap}</style></noscript>
@@ -68,6 +68,7 @@
       "@type": "FAQPage",
       "mainEntity": [
         {"@type": "Question", "name": "What do I need to run Mimac?", "acceptedAnswer": {"@type": "Answer", "text": "An iPad with an M-series chip (iPad Pro recommended) running iPadOS 26 or later, a trackpad and keyboard such as the Magic Keyboard, and a Mac with Apple silicon running macOS 15 or later with the free Mimac Connect app installed. Intel Macs are not supported."}},
+        {"@type": "Question", "name": "Do I need an HDMI dummy plug?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mimac Connect creates a display on the Mac in software, at your iPad's exact resolution and aspect ratio, so nothing goes in the HDMI port. If you already have a dummy plug from an earlier setup, remove it: it gives the Mac a second, differently sized display that only gets in the way."}},
         {"@type": "Question", "name": "Does Mimac work away from home?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Mimac has no relay servers of its own. On your local network it connects directly. Away from home, install Tailscale on both devices, sign in to the same tailnet, and connect to your Mac's Tailscale name. Tailscale's free personal plan is enough."}},
         {"@type": "Question", "name": "Can Mimac start before I log in to the Mac?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you install the optional Start before login component of Mimac Connect. It needs FileVault turned off, or a Mac that reaches the login window unattended. A FileVault-protected Mac stops at the pre-boot unlock screen, which no remote desktop app can reach."}},
         {"@type": "Question", "name": "Does Mimac work with Intel Macs?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mimac Connect requires a Mac with Apple silicon (M1 or later) because it relies on the low-latency HEVC encoder in those chips."}},
@@ -107,7 +108,7 @@
   <div class="wrap">
     <p class="eyebrow">Remote desktop for iPad Pro + Magic Keyboard</p>
     <h1>Your Mac, at 120&nbsp;fps, on the iPad&nbsp;Pro.</h1>
-    <p class="lead">Mimac turns an iPad Pro and Magic Keyboard into the best display and input device a Mac mini or Mac Studio can have. Native resolution. Real trackpad gestures. Lossless audio. No account, no relay servers, no subscription.</p>
+    <p class="lead">Mimac turns an iPad Pro and Magic Keyboard into the best display and input device a Mac mini or Mac Studio can have. Native resolution, no HDMI dummy plug. Real trackpad gestures. Lossless audio. No account, no relay servers, no subscription.</p>
     <div class="cta">
       <a class="btn btn-lg" href="https://apps.apple.com/app/id6807559628">Download on the App Store</a>
       <a class="btn btn-lg btn-ghost" href="/mac/">Get Mimac Connect for Mac</a>
@@ -129,7 +130,7 @@
 <section class="proof" aria-label="Key facts">
   <div class="wrap proof-grid">
     <div><b>120 fps</b><span>on your local network</span></div>
-    <div><b>1:1</b><span>your iPad's native resolution</span></div>
+    <div><b>1:1</b><span>your iPad's resolution, no dongle</span></div>
     <!-- Latency slot: add "<div><b>N ms</b><span>glass to glass on LAN, measured</span></div>" once MEASURING.md has been run. -->
     <div><b>48 kHz</b><span>lossless audio, both ways</span></div>
     <div><b>$49.99</b><span>one purchase, forever</span></div>
@@ -187,7 +188,7 @@
   <div class="section-head">
     <p class="eyebrow">Pixel-perfect, 120 fps</p>
     <h2>The iPad Pro is the best display your Mac mini never had.</h2>
-    <p class="lead">Mimac creates a virtual display on your Mac at your iPad's exact native resolution: 2752&times;2064 on the 13-inch iPad Pro, 2420&times;1668 on the 11-inch. Your Mac renders <em>for</em> your iPad, pixel for pixel. No scaling, no soft text.</p>
+    <p class="lead">Mimac creates a virtual display on your Mac at your iPad's exact native resolution: 2752&times;2064 on the 13-inch iPad Pro, 2420&times;1668 on the 11-inch. Your Mac renders <em>for</em> your iPad, pixel for pixel. No scaling, no soft text. Nothing is plugged into the Mac to make that happen: no HDMI dummy plug, and no generic 1080p stand-in display.</p>
   </div>
   <div class="wrap">
     <svg class="diagram" viewBox="0 0 1120 300" role="img" aria-labelledby="dg1" style="max-width:900px;margin:0 auto">
@@ -265,6 +266,7 @@
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v9M6.3 6.3a8 8 0 1011.4 0"/></svg><span><strong>Starts before login.</strong> Reboot the Mac remotely and Mimac Connect is waiting at the login window. Optional component; needs FileVault off or a Mac that reaches the login window unattended.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg><span><strong>Screenshot to the Mac's clipboard.</strong> Drag a rectangle on the glass and it lands on your Mac's clipboard, ready to paste into Claude, Cursor or ChatGPT. Double-tap for a quick snapshot of an area.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 11-2.3-5.7M20 4v5h-5"/></svg><span><strong>Instant resume.</strong> Switch to another iPad app and back, and you are reconnected without a reconnect dance. Wi-Fi blips are absorbed, not surfaced.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v5M15 2v5M7 7h10v3a5 5 0 01-10 0z"/><path d="M12 15v6"/><path d="M3 3l18 18"/></svg><span><strong>No HDMI dummy plug.</strong> A headless Mac usually needs one before it will behave as though a monitor is attached. Mimac Connect creates the display in software, at your iPad's exact size and aspect ratio, so the HDMI port stays empty.</span></li>
       </ul>
       <p style="margin-top:1.5rem"><a href="/guides/mac-mini-for-ai-agents/">Read the guide: a Mac mini for AI agents &rarr;</a></p>
     </div>
@@ -346,7 +348,7 @@
           <tr><th scope="row">Lossless audio</th><td class="m"><span class="y">Yes</span>, 48 kHz PCM</td><td>Audio, codec not stated</td><td>64 kbps compressed</td><td><span class="n">No audio</span></td><td>Audio, codec not stated</td><td><span class="n">n/a</span></td></tr>
           <tr><th scope="row">Mic passthrough for dictation apps</th><td class="m"><span class="y">Yes</span>, Mimac Microphone</td><td>Built-in speech-to-text</td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
           <tr><th scope="row">Screenshot to Mac clipboard</th><td class="m"><span class="y">Yes</span>, drag or double-tap</td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
-          <tr><th scope="row">Headless Mac, no monitor</th><td class="m"><span class="y">Yes</span>, and can start before login</td><td>Yes</td><td>Own 1080p virtual display</td><td>Needs a display or dummy plug</td><td><span class="n">No</span></td><td>Yes (Headless Mode)</td></tr>
+          <tr><th scope="row">Headless Mac, no monitor</th><td class="m"><span class="y">Yes</span>, no dummy plug; can start before login</td><td>Yes</td><td>Own 1080p virtual display</td><td>Needs a display or dummy plug</td><td><span class="n">No</span></td><td>Yes (Headless Mode)</td></tr>
           <tr><th scope="row">Account or vendor relay</th><td class="m"><span class="y">None</span>. Direct on LAN; your Tailscale for remote</td><td>Vendor relay, 11 regions</td><td>Vendor relay; Gmail-based setup</td><td>Screens Connect relay</td><td>Vendor relay</td><td>Same network</td></tr>
           <tr><th scope="row">Pricing model</th><td class="m"><span class="y">$49.99 once</span>, free trial</td><td>$14.99/mo or $79.99/yr</td><td>$14.99 once</td><td>$29.99/yr or $179.99 lifetime</td><td>Free on LAN; $23.99/yr remote</td><td>$89.99 hardware, once</td></tr>
           <tr><th scope="row">Last iPad app update</th><td class="m">New for 2026</td><td>Aug 19, 2026</td><td>Oct 30, 2023</td><td>Jul 30, 2026</td><td>Jul 21, 2026</td><td>Jun 9, 2026</td></tr>
@@ -392,6 +394,10 @@
       <details>
         <summary>What do I need to run Mimac?</summary>
         <div><p>An iPad with an M-series chip (iPad Pro recommended) running iPadOS 26 or later, a trackpad and keyboard such as the Magic Keyboard, and a Mac with Apple silicon running macOS 15 or later with the free <a href="/mac/">Mimac Connect</a> app installed. Intel Macs are not supported.</p></div>
+      </details>
+      <details>
+        <summary>Do I need an HDMI dummy plug?</summary>
+        <div><p>No. Mimac Connect creates a display on the Mac in software, at your iPad's exact resolution and aspect ratio, so nothing goes in the HDMI port. If you already have a dummy plug from an earlier setup, remove it: it gives the Mac a second, differently sized display that only gets in the way.</p></div>
       </details>
       <details>
         <summary>Does Mimac work away from home?</summary>
