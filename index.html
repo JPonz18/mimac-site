@@ -32,7 +32,8 @@
     {
       "@type": "Organization",
       "@id": "https://mimac.ai/#org",
-      "name": "Mimac",
+      "name": "Alo Stories Inc.",
+      "legalName": "Alo Stories Inc.",
       "url": "https://mimac.ai/",
       "logo": "https://mimac.ai/assets/press/mimac-icon-1024.png",
       "email": "support@mimac.ai",
@@ -69,6 +70,7 @@
       "mainEntity": [
         {"@type": "Question", "name": "What do I need to run Mimac?", "acceptedAnswer": {"@type": "Answer", "text": "An iPad with an M-series chip (iPad Pro recommended) running iPadOS 26 or later, a trackpad and keyboard such as the Magic Keyboard, and a Mac with Apple silicon running macOS 15 or later with the free Mimac Connect app installed. Intel Macs are not supported."}},
         {"@type": "Question", "name": "Do I need an HDMI dummy plug?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mimac Connect creates a display on the Mac in software, at your iPad's exact resolution and aspect ratio, so nothing goes in the HDMI port. If you already have a dummy plug from an earlier setup, remove it: it gives the Mac a second, differently sized display that only gets in the way."}},
+        {"@type": "Question", "name": "Can I use an Apple Pencil?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, for markup. Draw anywhere on your Mac's screen and Mimac pauses the picture under your ink; a button appears, and one tap copies the annotated screenshot to the iPad's clipboard and the Mac's. Fingers, the trackpad and the pointer are unaffected, so only the Pencil draws. Mimac does not send pressure-sensitive pen strokes into Mac apps, so it is not a drawing-tablet replacement for Photoshop or Procreate."}},
         {"@type": "Question", "name": "Does Mimac work away from home?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Mimac has no relay servers of its own. On your local network it connects directly. Away from home, install Tailscale on both devices, sign in to the same tailnet, and connect to your Mac's Tailscale name. Tailscale's free personal plan is enough."}},
         {"@type": "Question", "name": "Can Mimac start before I log in to the Mac?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you install the optional Start before login component of Mimac Connect. It needs FileVault turned off, or a Mac that reaches the login window unattended. A FileVault-protected Mac stops at the pre-boot unlock screen, which no remote desktop app can reach."}},
         {"@type": "Question", "name": "Does Mimac work with Intel Macs?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mimac Connect requires a Mac with Apple silicon (M1 or later) because it relies on the low-latency HEVC encoder in those chips."}},
@@ -108,7 +110,7 @@
   <div class="wrap">
     <p class="eyebrow">Remote desktop for iPad Pro + Magic Keyboard</p>
     <h1>Your Mac, at 120&nbsp;fps, on the iPad&nbsp;Pro.</h1>
-    <p class="lead">Mimac turns an iPad Pro and Magic Keyboard into the best display and input device a Mac mini or Mac Studio can have. Native resolution, no HDMI dummy plug. Real trackpad gestures. Lossless audio. No account, no relay servers, no subscription.</p>
+    <p class="lead">Mimac turns an iPad Pro and Magic Keyboard into the best display and input device a Mac mini or Mac Studio can have. Native resolution, no HDMI dummy plug. Real trackpad gestures. Apple Pencil markup. Lossless audio. No account, no relay servers, no subscription.</p>
     <div class="cta">
       <a class="btn btn-lg" href="https://apps.apple.com/app/id6807559628">Download on the App Store</a>
       <a class="btn btn-lg btn-ghost" href="/mac/">Get Mimac Connect for Mac</a>
@@ -179,6 +181,29 @@
         <img class="device-frame" src="/assets/img/ipad-frame.svg" alt="" width="1600" height="1344" loading="lazy">
       </div>
       <p class="caption">Clips are captured at 60 fps by iPadOS. Mimac runs at 120.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Apple Pencil markup ===== -->
+<section class="section">
+  <div class="wrap split">
+    <div class="copy">
+      <p class="eyebrow">Apple Pencil</p>
+      <h2>Mark up your Mac's screen.</h2>
+      <p class="lead">Put the Pencil on the glass and the picture pauses under your ink. Circle the bug, arrow the button, write the note. One tap copies the whole thing as an annotated screenshot &mdash; on the iPad's clipboard and the Mac's, at the same moment.</p>
+      <ul class="feature-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15.5 3.5l5 5L9 20H4v-5z"/><path d="M13.5 5.5l5 5"/></svg><span><strong>The screen holds still while you draw.</strong> Ink on a moving screen stops meaning anything a second later, so the frame you drew on is the frame you keep.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="12" height="15" rx="2"/><path d="M15 21H5a2 2 0 0 1-2-2V7"/></svg><span><strong>One tap, both clipboards.</strong> Paste it into a message, a ticket, or straight into the AI assistant running on the Mac.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M3 12h18"/></svg><span><strong>Nothing else changes.</strong> Only the Pencil draws: fingers, the trackpad and the pointer keep driving the Mac exactly as before, and your palm can rest on the glass.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12h8"/></svg><span><strong>Pen, highlighter, eraser, undo</strong> &mdash; the iPadOS markup tools you already know, over a live Mac desktop.</span></li>
+      </ul>
+    </div>
+    <div class="media">
+      <div class="device">
+        <img class="device-screen" src="/assets/img/scene-markup.svg" alt="Red Apple Pencil ink circling a chart on a Mac window inside Mimac, with the Copy Screenshot bar at the top" width="1376" height="1032" loading="lazy">
+        <img class="device-frame" src="/assets/img/ipad-frame.svg" alt="" width="1600" height="1344" loading="lazy">
+      </div>
     </div>
   </div>
 </section>
@@ -349,6 +374,7 @@
           <tr><th scope="row">Lossless audio</th><td class="m"><span class="y">Yes</span>, 48 kHz PCM</td><td>Audio, codec not stated</td><td>64 kbps compressed</td><td><span class="n">No audio</span></td><td>Audio, codec not stated</td><td><span class="n">n/a</span></td></tr>
           <tr><th scope="row">Mic passthrough for dictation apps</th><td class="m"><span class="y">Yes</span>, Mimac Microphone</td><td>Built-in speech-to-text</td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
           <tr><th scope="row">Screenshot to Mac clipboard</th><td class="m"><span class="y">Yes</span>, drag or double-tap</td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
+          <tr><th scope="row">Apple Pencil markup on the screen</th><td class="m"><span class="y">Yes</span>, ink freezes the frame; one tap copies the annotated shot</td><td>Not verified</td><td>Not verified</td><td>Not verified</td><td>Not verified</td><td>Direct touch on a display</td></tr>
           <tr><th scope="row">Headless Mac, no monitor</th><td class="m"><span class="y">Yes</span>, no dummy plug; can start before login</td><td>Yes</td><td>Own 1080p virtual display</td><td>Needs a display or dummy plug</td><td><span class="n">No</span></td><td>Yes (Headless Mode)</td></tr>
           <tr><th scope="row">Account or vendor relay</th><td class="m"><span class="y">None</span>. Direct on LAN; your Tailscale for remote</td><td>Vendor relay, 11 regions</td><td>Vendor relay; Gmail-based setup</td><td>Screens Connect relay</td><td>Vendor relay</td><td>Same network</td></tr>
           <tr><th scope="row">Pricing model</th><td class="m"><span class="y">$49.99 once</span>, free trial</td><td>$14.99/mo or $79.99/yr</td><td>$14.99 once</td><td>$29.99/yr or $179.99 lifetime</td><td>Free on LAN; $23.99/yr remote</td><td>$89.99 hardware, once</td></tr>
@@ -399,6 +425,10 @@
       <details>
         <summary>Do I need an HDMI dummy plug?</summary>
         <div><p>No. Mimac Connect creates a display on the Mac in software, at your iPad's exact resolution and aspect ratio, so nothing goes in the HDMI port. If you already have a dummy plug from an earlier setup, remove it: it gives the Mac a second, differently sized display that only gets in the way.</p></div>
+      </details>
+      <details>
+        <summary>Can I use an Apple Pencil?</summary>
+        <div><p>Yes, for markup. Draw anywhere on your Mac's screen and Mimac pauses the picture under your ink; a button appears, and one tap copies the annotated screenshot to the iPad's clipboard and the Mac's. Fingers, the trackpad and the pointer are unaffected, so only the Pencil draws. Note what this is not: Mimac does not send pressure-sensitive pen strokes into Mac apps, so it is not a drawing-tablet replacement for Photoshop or Procreate. The markup lives on the iPad's copy of the screen, and what you copy is a picture.</p></div>
       </details>
       <details>
         <summary>Does Mimac work away from home?</summary>
@@ -477,7 +507,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Justin Ponczek. iPad, iPad Pro, Mac, Mac mini, Mac Studio, macOS and Magic Keyboard are trademarks of Apple Inc. Mimac is not affiliated with Apple.</span>
+      <span>&copy; 2026 Alo Stories Inc. iPad, iPad Pro, Mac, Mac mini, Mac Studio, macOS and Magic Keyboard are trademarks of Apple Inc. Mimac is not affiliated with Apple.</span>
       <span><a href="/press/">Engineered with Claude</a></span>
     </div>
   </div>

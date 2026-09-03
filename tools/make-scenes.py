@@ -265,6 +265,51 @@ def scene_agents():
     return s
 
 
+def scene_markup():
+    """Apple Pencil markup: the screen paused under red ink, the copy bar up."""
+    # A wide canvas window so all four canvas frames land; the ink is placed against
+    # their absolute positions (canvas origin = window x+220, y+40).
+    wx, wy, ww, wh = 80, 90, W - 160, 800
+    s = wallpaper() + window(wx, wy, ww, wh, "canvas", seed=41) + dock() + menubar()
+    ink = "#FF3B30"
+    # A ring around the tall frame, an arrow up to it from a written note, and a line
+    # under the title of the selected frame.
+    strokes = (
+        "M866 168c112 6 168 62 164 190-4 128-2 176-18 208-16 32-118 44-186 34"
+        "-68-10-96-40-100-140-4-100-2-192 16-236 18-44 62-58 124-56z",
+        "M566 700c46-58 92-136 150-206",
+        "M700 470c22 10 38 16 46 16-14 10-26 24-34 40",
+        "M380 258c72-14 138-10 176 6",
+    )
+    s += '<g fill="none" stroke="%s" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">' % ink
+    for d in strokes:
+        s += '<path d="%s"/>' % d
+    s += '</g>'
+    s += '<text x="360" y="762" font-family="%s" font-size="32" font-style="italic" fill="%s">ship this one</text>' % (FONT, ink)
+    # Mimac's markup bar, drawn the way the app draws it.
+    bx, by, bw, bh = (W - 624) / 2, 40, 624, 52
+    s += rr(bx, by, bw, bh, 26, "#000000", ' opacity="0.85"')
+    s += '<rect x="%.0f" y="%.0f" width="%.0f" height="%.0f" rx="26" fill="none" stroke="#FFFFFF" stroke-opacity="0.12"/>' % (bx, by, bw, bh)
+    s += '<path d="M%.0f %.0fl6-18 14 4-14 14z" fill="#E6E9EF"/>' % (bx + 28, by + 38)
+    s += rr(bx + 28, by + 14, 14, 6, 3, "#E6E9EF")
+    s += '<text x="%.0f" y="%.0f" font-family="%s" font-size="18" fill="#E6E9EF" opacity="0.9">Screen paused for markup</text>' % (bx + 56, by + 32, FONT)
+    s += rr(bx + 292, by + 12, 40, 28, 14, "#FFFFFF", ' opacity="0.12"')
+    s += '<path d="M%.0f %.0fh14M%.0f %.0fl5-5M%.0f %.0fl5 5" stroke="#E6E9EF" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>' % (
+        bx + 306, by + 26, bx + 306, by + 26, bx + 306, by + 26)
+    s += rr(bx + 342, by + 10, 182, 32, 16, "#4080FF")
+    s += '<text x="%.0f" y="%.0f" font-family="%s" font-size="17" font-weight="600" fill="#FFFFFF">Copy Screenshot</text>' % (bx + 366, by + 32, FONT)
+    s += rr(bx + 534, by + 12, 74, 28, 14, "#FFFFFF", ' opacity="0.12"')
+    s += '<text x="%.0f" y="%.0f" font-family="%s" font-size="15" fill="#E6E9EF" opacity="0.75">Discard</text>' % (bx + 548, by + 31, FONT)
+    # The pencil, tip landing on the arrowhead.
+    s += ('<g transform="rotate(38 1150 300)">'
+          + rr(1134, 150, 32, 300, 16, "#E6E9EF")
+          + '<rect x="1134" y="150" width="32" height="300" rx="16" fill="none" stroke="#0B0D12" stroke-opacity="0.15"/>'
+          + rr(1134, 300, 32, 10, 0, "#C9CED8", ' opacity="0.7"')
+          + '<path d="M1134 450h32l-16 34z" fill="#B9BFCA"/><path d="M1142 470h16l-8 18z" fill="#3A3F49"/>'
+          + '</g>')
+    return s
+
+
 def scene_connect():
     """The Mimac connect screen: host list and a pairing code prompt."""
     s = wallpaper()
@@ -291,4 +336,5 @@ if __name__ == "__main__":
     out("scene-login.svg", scene_login())
     out("scene-dictation.svg", scene_dictation())
     out("scene-agents.svg", scene_agents())
+    out("scene-markup.svg", scene_markup())
     out("scene-connect.svg", scene_connect())
