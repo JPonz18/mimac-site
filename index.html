@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mimac: Your Mac, at 120 fps, on the iPad Pro</title>
-<meta name="description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at the iPad's exact resolution, 120 fps, no HDMI dongle. One purchase, forever.">
+<meta name="description" content="Remote desktop for iPad Pro and Magic Keyboard. The iPad's exact resolution at 120 fps, no HDMI dongle, its camera as a Mac webcam. One purchase, forever.">
 <link rel="canonical" href="https://mimac.ai/">
 <meta name="theme-color" content="#0B0D12">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -14,14 +14,14 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Mimac">
 <meta property="og:title" content="Mimac: Your Mac, at 120 fps, on the iPad Pro">
-<meta property="og:description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at the iPad's exact resolution, 120 fps, no HDMI dongle. One purchase, forever.">
+<meta property="og:description" content="Remote desktop for iPad Pro and Magic Keyboard. The iPad's exact resolution at 120 fps, no HDMI dongle, its camera as a Mac webcam. One purchase, forever.">
 <meta property="og:url" content="https://mimac.ai/">
 <meta property="og:image" content="https://mimac.ai/assets/og/home.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Mimac: Your Mac, at 120 fps, on the iPad Pro">
-<meta name="twitter:description" content="Remote desktop rebuilt for iPad Pro and Magic Keyboard. Your Mac at the iPad's exact resolution, 120 fps, no HDMI dongle. One purchase, forever.">
+<meta name="twitter:description" content="Remote desktop for iPad Pro and Magic Keyboard. The iPad's exact resolution at 120 fps, no HDMI dongle, its camera as a Mac webcam. One purchase, forever.">
 <meta name="twitter:image" content="https://mimac.ai/assets/og/home.png">
 <link rel="stylesheet" href="/assets/site.css?v=141a55f">
 <noscript><style>.nav-toggle{display:none!important}.menu{display:flex!important;position:static!important;flex-direction:row!important;flex-wrap:wrap;gap:.6rem 1.2rem!important;padding:0 0 .9rem!important;border:0!important;width:100%}.menu a{padding:0!important;border:0!important;font-size:.95rem!important}.nav-inner{flex-wrap:wrap}</style></noscript>
@@ -71,7 +71,8 @@
         {"@type": "Question", "name": "What do I need to run Mimac?", "acceptedAnswer": {"@type": "Answer", "text": "An iPad with an M-series chip (iPad Pro recommended) running iPadOS 26 or later, a trackpad and keyboard such as the Magic Keyboard, and a Mac with Apple silicon running macOS 15 or later with the free Mimac Connect app installed. Intel Macs are not supported."}},
         {"@type": "Question", "name": "Do I need an HDMI dummy plug?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mimac Connect creates a display on the Mac in software, at your iPad's exact resolution and aspect ratio, so nothing goes in the HDMI port. If you already have a dummy plug from an earlier setup, remove it: it gives the Mac a second, differently sized display that only gets in the way."}},
         {"@type": "Question", "name": "Can I use an Apple Pencil?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, for markup. Draw anywhere on your Mac's screen and Mimac pauses the picture under your ink; a button appears, and one tap copies the annotated screenshot to the iPad's clipboard and the Mac's. Fingers, the trackpad and the pointer are unaffected, so only the Pencil draws. Mimac does not send pressure-sensitive pen strokes into Mac apps, so it is not a drawing-tablet replacement for Photoshop or Procreate."}},
-        {"@type": "Question", "name": "Does Mimac work away from home?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Mimac has no relay servers of its own. On your local network it connects directly. Away from home, install Tailscale on both devices, sign in to the same tailnet, and connect to your Mac's Tailscale name. Tailscale's free personal plan is enough."}},
+        {"@type": "Question", "name": "Does Mimac work away from home?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, and it no longer needs Tailscale. Your Mac works out every route to itself, including a port it asks your router to open, and publishes that list to your paired iPads. Each connection races the routes and takes whichever answers first, with no relay of ours in the middle. If your network will not allow a direct connection, such as the carrier-grade NAT most mobile providers use or a router with NAT-PMP and UPnP switched off, Tailscale still works as a fallback on its free personal plan."}},
+        {"@type": "Question", "name": "Can Mac apps use the iPad's camera?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Mimac Connect includes a camera extension, so your iPad's front camera appears on the Mac as a webcam called Mimac Camera at 1080p and 30 fps. FaceTime, Zoom, Google Meet and Safari treat it as any other camera. macOS asks you to allow the extension the first time. Two limits: the camera opens only while a Mac app is actually using it, and Mimac must be on screen on the iPad, because iPadOS will not hand the camera to an app in the background."}},
         {"@type": "Question", "name": "Can Mimac start before I log in to the Mac?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you install the optional Start before login component of Mimac Connect. It needs FileVault turned off, or a Mac that reaches the login window unattended. A FileVault-protected Mac stops at the pre-boot unlock screen, which no remote desktop app can reach."}},
         {"@type": "Question", "name": "Does Mimac work with Intel Macs?", "acceptedAnswer": {"@type": "Answer", "text": "No. Mimac Connect requires a Mac with Apple silicon (M1 or later) because it relies on the low-latency HEVC encoder in those chips."}},
         {"@type": "Question", "name": "Is there an iPhone or Vision Pro app?", "acceptedAnswer": {"@type": "Answer", "text": "Not at launch. Mimac is built for iPad Pro with a trackpad and keyboard. iPhone and Vision Pro are not supported yet."}},
@@ -110,7 +111,7 @@
   <div class="wrap">
     <p class="eyebrow">Remote desktop for iPad Pro + Magic Keyboard</p>
     <h1>Your Mac, at 120&nbsp;fps, on the iPad&nbsp;Pro.</h1>
-    <p class="lead">Mimac turns an iPad Pro and Magic Keyboard into the best display and input device a Mac mini or Mac Studio can have. Native resolution, no HDMI dummy plug. Real trackpad gestures. Apple Pencil markup. Lossless audio. No account, no relay servers, no subscription.</p>
+    <p class="lead">Mimac turns an iPad Pro and Magic Keyboard into the best display and input device a Mac mini or Mac Studio can have. Native resolution, no HDMI dummy plug. Real trackpad gestures. Apple Pencil markup. Lossless audio, and its camera as your Mac's webcam. No account, no relay servers, no subscription.</p>
     <div class="cta">
       <a class="btn btn-lg" href="https://apps.apple.com/app/id6807559628">Download on the App Store</a>
       <a class="btn btn-lg btn-ghost" href="/mac/">Get Mimac Connect for Mac</a>
@@ -262,10 +263,11 @@
 <section class="section section-alt">
   <div class="wrap split">
     <div class="copy">
-      <p class="eyebrow">Sound and voice</p>
-      <h2>Lossless audio. Your voice on the Mac.</h2>
-      <p class="lead">Mimac streams your Mac's audio as 48 kHz PCM, uncompressed. In the other direction, your iPad's microphone appears on the Mac as an input device called Mimac Microphone.</p>
+      <p class="eyebrow">Sound, voice and camera</p>
+      <h2>Your audio, your voice, your camera.</h2>
+      <p class="lead">Mimac streams your Mac's audio as 48 kHz PCM, uncompressed. In the other direction, your iPad's microphone appears on the Mac as an input device called Mimac Microphone, and its front camera appears as a webcam called Mimac Camera.</p>
       <ul class="feature-list">
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg><span><strong>The iPad's camera becomes the Mac's webcam.</strong> FaceTime, Zoom, Meet and Safari on the Mac pick it up like any other camera, at 1080p and 30 fps. A Mac mini has no camera of its own and Continuity Camera is iPhone-only, so this is a gap nothing else fills. The camera opens only while a Mac app is actually using it, and Mimac has to be on screen on the iPad, because iPadOS will not hand the camera to an app in the background.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10v4M8 7v10M12 4v16M16 7v10M20 10v4"/></svg><span><strong>Dictation apps just work.</strong> Wispr Flow, OpenWhispr and macOS dictation hear you exactly as they do at your desk, because they see a real microphone.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M9 21h6"/></svg><span><strong>The Magic Keyboard's dictation key works too.</strong> With a hardware keyboard attached, what you say arrives on the Mac as typed text.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8V6a2 2 0 012-2h2M16 4h2a2 2 0 012 2v2M20 16v2a2 2 0 01-2 2h-2M8 20H6a2 2 0 01-2-2v-2"/><path d="M9 12h6"/></svg><span><strong>Optional, and honest about it.</strong> Mimac Microphone is an audio driver, installed only if you tick it in the Mac installer. Skip it and everything else still works.</span></li>
@@ -310,19 +312,19 @@
   <div class="wrap split">
     <div class="copy">
       <p class="eyebrow">Away from home</p>
-      <h2>No relay. Your network, or your tailnet.</h2>
-      <p class="lead">Mimac has no servers. On your local network the iPad talks to the Mac directly. Away from home, it rides your Tailscale network, end-to-end encrypted, with nothing of ours in the middle.</p>
+      <h2>No relay. No Tailscale. Just your Mac.</h2>
+      <p class="lead">Mimac has no servers. Your Mac works out every way it can be reached &mdash; the local network, its name, an IPv6 address, a port it asks your router to open &mdash; and hands that list to your paired iPads. Every connection races them and takes whichever answers first, so being away from home needs nothing extra installed.</p>
       <ul class="feature-list">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg><span><strong>Tailscale on both devices is required for off-network use.</strong> Its free personal plan is enough. Install it on the Mac and the iPad, sign in to the same tailnet, and enter your Mac's Tailscale name in Mimac.</span></li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/></svg><span><strong>Tailscale is a fallback now, not a requirement.</strong> Mimac Connect asks your router for a port and publishes that route to your paired iPads, so a connection from a hotel or a coffee shop goes straight to your Mac. Some networks will not allow it &mdash; the carrier-grade NAT most mobile providers use, and routers with NAT-PMP and UPnP switched off &mdash; and Tailscale still covers those, free on its personal plan.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg><span><strong>Encrypted on every path.</strong> Pairing is a one-time six-digit code shown on the Mac. Keys stay in the Keychain on both devices.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8M15 7h6v6"/></svg><span><strong>Frame rate on the road depends on your connection.</strong> Mimac measures the link and walks bitrate, frame rate and error correction down to whatever it can actually carry, backing off fast on packet loss and recovering slowly. Your settings are the ceiling, not the target. 120 fps is a local-network figure. We say so.</span></li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2"/><path d="M5 11v2"/></svg><span><strong>Battery saver for the long haul.</strong> Turn it on and a session left idle drops to a few frames a second instead of full rate &mdash; a video or a progress bar still moves, just cheaply &mdash; and any touch restores full rate at once. Off by default, and a pill says so whenever it is working, because a screen that quietly stops being live is worse than one that costs battery.</span></li>
       </ul>
-      <p style="margin-top:1.5rem"><a href="/guides/remote-mac-with-tailscale/">Set it up step by step &rarr;</a></p>
+      <p style="margin-top:1.5rem"><a href="/guides/remote-mac-with-tailscale/">If your network blocks it: the Tailscale fallback &rarr;</a></p>
     </div>
     <div class="media">
       <svg class="diagram" viewBox="0 0 560 360" role="img" aria-labelledby="dg2">
-        <title id="dg2">The iPad and the Mac connect directly on the local network, or through the user's own Tailscale tailnet. There are no Mimac servers.</title>
+        <title id="dg2">The iPad and the Mac connect directly on the local network, or straight over the internet through a port the Mac asks the router to open. There are no Mimac servers.</title>
         <g font-family="-apple-system, 'SF Pro Text', Inter, system-ui, sans-serif">
           <rect x="30" y="90" width="150" height="112" rx="14" fill="#171B25" stroke="#3A3F4A"/>
           <rect x="44" y="102" width="122" height="88" rx="6" fill="#0B0D12"/>
@@ -337,7 +339,7 @@
           <path d="M180 146C250 146 250 146 280 146S310 146 380 146" fill="none" stroke="#4FD1FF" stroke-opacity="0.25" stroke-width="14"/>
           <rect x="225" y="126" width="110" height="40" rx="20" fill="#0B0D12" stroke="#4FD1FF"/>
           <text x="280" y="151" text-anchor="middle" fill="#4FD1FF" font-size="14" font-weight="600">encrypted</text>
-          <text x="280" y="290" text-anchor="middle" fill="#F2F4F8" font-size="16" font-weight="600">Local network, or your Tailscale tailnet</text>
+          <text x="280" y="290" text-anchor="middle" fill="#F2F4F8" font-size="16" font-weight="600">Local network, or straight over the internet</text>
           <text x="280" y="316" text-anchor="middle" fill="#737B8A" font-size="14">No Mimac servers. No account. Nothing to sign up for.</text>
         </g>
       </svg>
@@ -373,10 +375,11 @@
           <tr><th scope="row">No on-screen chrome</th><td class="m"><span class="y">Yes</span>, controls in the iPadOS menu bar</td><td>Not verified</td><td>Not verified</td><td>Not verified</td><td>Not verified</td><td>Not verified</td></tr>
           <tr><th scope="row">Lossless audio</th><td class="m"><span class="y">Yes</span>, 48 kHz PCM</td><td>Audio, codec not stated</td><td>64 kbps compressed</td><td><span class="n">No audio</span></td><td>Audio, codec not stated</td><td><span class="n">n/a</span></td></tr>
           <tr><th scope="row">Mic passthrough for dictation apps</th><td class="m"><span class="y">Yes</span>, Mimac Microphone</td><td>Built-in speech-to-text</td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
+          <tr><th scope="row">iPad camera as a Mac webcam</th><td class="m"><span class="y">Yes</span>, Mimac Camera, 1080p30</td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">n/a</span></td></tr>
           <tr><th scope="row">Screenshot to Mac clipboard</th><td class="m"><span class="y">Yes</span>, drag or double-tap</td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td><td><span class="n">&mdash;</span></td></tr>
           <tr><th scope="row">Apple Pencil markup on the screen</th><td class="m"><span class="y">Yes</span>, ink freezes the frame; one tap copies the annotated shot</td><td>Not verified</td><td>Not verified</td><td>Not verified</td><td>Not verified</td><td>Direct touch on a display</td></tr>
           <tr><th scope="row">Headless Mac, no monitor</th><td class="m"><span class="y">Yes</span>, no dummy plug; can start before login</td><td>Yes</td><td>Own 1080p virtual display</td><td>Needs a display or dummy plug</td><td><span class="n">No</span></td><td>Yes (Headless Mode)</td></tr>
-          <tr><th scope="row">Account or vendor relay</th><td class="m"><span class="y">None</span>. Direct on LAN; your Tailscale for remote</td><td>Vendor relay, 11 regions</td><td>Vendor relay; Gmail-based setup</td><td>Screens Connect relay</td><td>Vendor relay</td><td>Same network</td></tr>
+          <tr><th scope="row">Account or vendor relay</th><td class="m"><span class="y">None</span>. Direct on LAN and over the internet</td><td>Vendor relay, 11 regions</td><td>Vendor relay; Gmail-based setup</td><td>Screens Connect relay</td><td>Vendor relay</td><td>Same network</td></tr>
           <tr><th scope="row">Pricing model</th><td class="m"><span class="y">$49.99 once</span>, free trial</td><td>$14.99/mo or $79.99/yr</td><td>$14.99 once</td><td>$29.99/yr or $179.99 lifetime</td><td>Free on LAN; $23.99/yr remote</td><td>$89.99 hardware, once</td></tr>
           <tr><th scope="row">Last iPad app update</th><td class="m">New for 2026</td><td>Aug 19, 2026</td><td>Oct 30, 2023</td><td>Jul 30, 2026</td><td>Jul 21, 2026</td><td>Jun 9, 2026</td></tr>
         </tbody>
@@ -432,7 +435,11 @@
       </details>
       <details>
         <summary>Does Mimac work away from home?</summary>
-        <div><p>Yes. Mimac has no relay servers of its own. On your local network it connects directly. Away from home, install Tailscale on both devices, sign in to the same tailnet, and connect to your Mac's Tailscale name. Tailscale's free personal plan is enough. <a href="/guides/remote-mac-with-tailscale/">Step-by-step guide.</a></p></div>
+        <div><p>Yes, and it no longer needs Tailscale. Your Mac works out every route to itself, including a port it asks your router to open, and publishes that list to your paired iPads. Each connection races those routes and takes whichever answers first, with no relay of ours in the middle. If your network will not allow a direct connection &mdash; the carrier-grade NAT most mobile providers use, or a router with NAT-PMP and UPnP switched off &mdash; Tailscale still works as a fallback, free on its personal plan. <a href="/guides/remote-mac-with-tailscale/">The fallback, step by step.</a></p></div>
+      </details>
+      <details>
+        <summary>Can Mac apps use the iPad's camera?</summary>
+        <div><p>Yes. Mimac Connect includes a camera extension, so your iPad's front camera appears on the Mac as a webcam called <strong>Mimac Camera</strong> at 1080p and 30 fps. FaceTime, Zoom, Google Meet and Safari treat it as any other camera, which matters on a Mac mini or Mac Studio that has no camera of its own. macOS asks you to allow the extension the first time. Two limits worth knowing: the camera opens only while a Mac app is actually using it, and Mimac has to be on screen on the iPad, because iPadOS will not hand the camera to an app in the background.</p></div>
       </details>
       <details>
         <summary>Can Mimac start before I log in to the Mac?</summary>

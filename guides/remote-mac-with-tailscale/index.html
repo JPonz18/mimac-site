@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Reach your Mac from anywhere with Tailscale and Mimac</title>
-<meta name="description" content="Use Mimac outside your home network: install Tailscale on your Mac and iPad, join the same tailnet, and connect by name. Step by step, honest expectations.">
+<title>Tailscale with Mimac: the fallback when a direct route fails</title>
+<meta name="description" content="Mimac reaches your Mac directly, away from home included. When a network refuses that, Tailscale is the fallback: install it on both devices, join one tailnet, connect by name.">
 <link rel="canonical" href="https://mimac.ai/guides/remote-mac-with-tailscale/">
 <meta name="theme-color" content="#FBFBFD" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0B0D12" media="(prefers-color-scheme: dark)">
@@ -80,8 +80,8 @@
 <section class="page-head">
   <div class="wrap">
     <p class="crumbs"><a href="/">Mimac</a><span>/</span>Guides<span>/</span>Remote Mac with Tailscale</p>
-    <h1>Reach your Mac from anywhere with Tailscale</h1>
-    <p class="lead">Mimac has no relay servers. On your own network the iPad and the Mac talk directly; away from home they need a private path between them. Tailscale provides one, for free, in about fifteen minutes. This guide covers the setup, the one setting that matters for a headless Mac, and what to expect from the connection.</p>
+    <h1>Tailscale, for the networks that refuse a direct route</h1>
+    <p class="lead">Mimac no longer needs Tailscale. Your Mac publishes every route to itself, including a port it asks your router to open, and the iPad races them, so away from home usually just works. Some networks will not allow a direct route at all &mdash; the carrier-grade NAT most mobile providers use, and routers with NAT-PMP and UPnP switched off &mdash; and Tailscale is the fallback for those, free and about fifteen minutes to set up. This guide covers the setup, the one setting that matters for a headless Mac, and what to expect from the connection.</p>
   </div>
 </section>
 <section class="page-body">
